@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>{{ project.title }}</title>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/css/uikit.min.css" />
+</head>
+<body>
+    <div class="uk-container">
+        <h1 class="uk-heading-line"><span>{{ project.title }}</span></h1>
+        <div class="uk-card uk-card-default uk-card-body uk-margin">
+            <p>{{ project.description }}</p>
+            <p><strong>Technology:</strong> {{ project.technology }}</p>
+            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="uk-border-rounded">
+        </div>
+    </div>
+
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/js/uikit-icons.min.js"></script>
+</body>
+</html>
