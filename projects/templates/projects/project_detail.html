@@ -1,23 +1,78 @@
 <!DOCTYPE html>
+<html lang="en">
 {% load static %}
-<html>
 <head>
-    <title>{{ project.title }}</title>
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/css/uikit.min.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple HTML Page with UIkit</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js"></script>
 </head>
 <body>
-    <div class="uk-container">
-        <h1 class="uk-heading-line"><span>{{ project.title }}</span></h1>
-        <div class="uk-card uk-card-default uk-card-body uk-margin">
-            <p>{{ project.description }}</p>
-            <p><strong>Technology:</strong> {{ project.technology }}</p>
-            <img src="{{ project.image.url }}" alt="{{ project.title }}" class="uk-border-rounded">
-        </div>
-    </div>
 
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.14/dist/js/uikit-icons.min.js"></script>
+<header>
+    <nav class="uk-navbar-container">
+        <div class="uk-container">
+            <div uk-navbar>
+                <div class="uk-navbar-left">
+                    <a class="uk-navbar-item uk-logo" href="{% url 'index' %}" aria-label="Back to Home">
+                        <img src="{% static 'images/1.jpg' %}" alt="Logo" aria-label="Back to Home" style="height: 50px;">
+                    </a>
+                    <ul class="uk-navbar-nav">
+                        <li><a href="#"><h3>Profile</h3></a></li>
+                        <li class="uk-active">
+                            <a href="#projects">Projects</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    {% for project in projects %}
+
+                                        <li d="{{ project.title }}"><a href="{% url 'project_detail' project.pk %}">{{project.title}}</a></li>
+
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="uk-navbar-right">
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-nav"><a href="#">Right</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<main class="uk-container uk-margin-large-top">
+    <h1>{{ project.title }}</h1>
+    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+    <p>{{ project.description }}</p>
+    <p><strong>Technology:</strong> {{ project.technology }}</p>
+</main>
+
+<footer class="uk-section uk-section-small uk-section-muted uk-text-left">
+    <div class="uk-container">
+        <h2>Contact: </h2>
+        <ul class="uk-list">
+            <li>
+                <a href="mailto:sabitshangerey@gmail.com" uk-icon="icon: mail">e-mail</a>
+            </li>
+            <li>
+                <a href="https://www.instagram.com/s_sabit" target="_blank" uk-icon="icon: instagram">instagram</a>
+            </li>
+            <li>
+                <a href="https://wa.me/+77086415391" target="_blank" uk-icon="icon: whatsapp">wahtsapp</a>
+            </li>
+            <li>
+                <a href="https://github.com/Tokagero13" target="_blank" uk-icon="icon: github">github</a>
+            </li>
+        </ul>
+    </div>
+</footer>
+
 </body>
 </html>

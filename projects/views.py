@@ -10,7 +10,7 @@ def index(request):
 
 class ProjectDetailView(DetailView):
     model = Project
-    template_name = 'project_detail.html'
+    template_name = 'projects/project_detail.html'
     context_object_name = 'project'
 
 def CV(request):
