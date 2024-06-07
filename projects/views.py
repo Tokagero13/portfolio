@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Project
+from .models import Project, MyCv
 from django.views.generic.detail import DetailView
 from django.http import HttpResponse
 
@@ -13,5 +13,7 @@ class ProjectDetailView(DetailView):
     template_name = 'projects/project_detail.html'
     context_object_name = 'project'
 
-def CV(request):
-    return render(request, 'projects/my_cv.html')
+def cv(DetailView):
+    model = MyCv
+    template_name = 'projects/my_cv.html'
+    context_object_name = 'cv'

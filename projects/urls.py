@@ -6,7 +6,6 @@ from .views import ProjectDetailView
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('my_cv', views.CV, name='my CV'),
 
 ]
 
