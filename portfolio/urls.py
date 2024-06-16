@@ -27,7 +27,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('projects/', include('projects.urls'), name='projects'),
     path('projects/<int:pk>/', ProjectDetailView.as_view(), name='project_detail'),
-    path('cv', CV_view, name='cv')
+    # path('cv', CV_view, name='cv')
+    path('cv/', include('projects.urls')),  # Include the CV app URLs
+    path('projects/', include('projects.urls')),  # Your existing portfolio app URLs
 
 ]
 

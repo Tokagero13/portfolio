@@ -22,8 +22,8 @@
     {% endfor %}
     
     <h3>Projects</h3>
-    {{ project_formset.management_form }}
-    {% for form in project_formset %}
+    {{ cv_project_formset.management_form }}
+    {% for form in cv_project_formset %}
         {{ form.as_p }}
     {% endfor %}
     

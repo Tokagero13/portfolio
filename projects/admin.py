@@ -1,29 +1,5 @@
 from django.contrib import admin
-from .models import Project, ProjectImage
-from .models import CV, PersonalInfo, Education, Experience, Skill, Project
-
-# my CV
-class EducationInline(admin.TabularInline):
-    model = Education
-    extra = 1
-
-class ExperienceInline(admin.TabularInline):
-    model = Experience
-    extra = 1
-
-class SkillInline(admin.TabularInline):
-    model = Skill
-    extra = 1
-
-class ProjectInline(admin.TabularInline):
-    model = Project
-    extra = 1
-
-class CVAdmin(admin.ModelAdmin):
-    inlines = [EducationInline, ExperienceInline, SkillInline, ProjectInline]
-
-admin.site.register(PersonalInfo)
-admin.site.register(CV, CVAdmin)
+from .models import *
 
 # Projects
 class ProjectImageInline(admin.TabularInline):
