@@ -1,0 +1,36 @@
+{% extends "projects/layout.html" %}
+{% load static %}
+{% block title %}Projects{% endblock %} 
+{% block main %}
+  <main class="uk-container uk-margin-small-top uk-margin-small-bottom">
+    <div class="uk-child-width-1-3@m" uk-grid>
+      {% for project in projects %}
+        <div>
+            <a href="{% url 'project_detail' project.pk %}">
+                <div class="uk-card uk-card-hover uk-card-media-center">
+                    <div class="uk-card-media-top">
+                        {% with project.images.first as first_image %}
+                            {% if first_image %}
+                                <img src="{{ first_image.image.url }}" alt="{{ project.title }}" class="uk-height-medium">
+                            {% else %}
+                                <img src="{% static 'path/to/default/image.jpg' %}" alt="Default Image" class="uk-height-small">
+                            {% endif %}
+                        {% endwith %}
+                    </div>
+                    <div class="uk-card-body uk-text-left">
+                        <h3 class="uk-card-title">{{ project.title }}</h3>
+                        <p>{{ project.description|slice:":250" }}
+                            {% if project.description|length > 250 %}
+                                ...
+                            {% endif %}
+                        </p>
+                        <p><strong>Technology:</strong> {{ project.technology }}</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+
+    </div>
+  </main>
+{% endblock main %}

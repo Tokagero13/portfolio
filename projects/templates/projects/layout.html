@@ -15,35 +15,51 @@
         <nav class="uk-navbar-container">
             <div class="uk-container">
                 <div uk-navbar>
+        
                     <div class="uk-navbar-left">
-                        <a class="uk-navbar-item uk-logo" href="{% url 'index' %}" aria-label="Back to Home">
+                        <a class="uk-navbar-item uk-logo" href="{% url 'home' %}" aria-label="Back to Home">
                             <img src="{% static 'images/1.jpg' %}" alt="Logo" aria-label="Back to Home" style="height: 50px;">
                         </a>
+                        
                         <ul class="uk-navbar-nav">
-                            <li class="uk-active"><a href="#"><h3>Profile</h3></a></li>
+                            <li class="uk-active"><a href="{% url 'cv' %}">Profile</a></li>
                             <li>
-                                <a href="#projects">Projects</a>
+                                <a href="{% url 'all_projects' %}">Projects</a>
                                 <div class="uk-navbar-dropdown">
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
                                         {% for project in projects %}
-
-                                            <li d="{{ project.title }}"><a href="{% url 'project_detail' project.pk %}">{{project.title}}</a></li>
-
+                                            <li><a href="{{ project.get_absolute_url }}">{{ project.title }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 </div>
                             </li>
                         </ul>
+        
                     </div>
-
                     <div class="uk-navbar-right">
+        
                         <ul class="uk-navbar-nav">
-                            <li class="uk-nav"><a href="#">Right</a></li>
+                            <li>
+                                <a href="#">login/register</a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li class="uk-active"><a href="#">Active</a></li>
+                                        <li><a href="#">Item</a></li>
+                                        <li class="uk-nav-header">Header</li>
+                                        <li><a href="#">Item</a></li>
+                                        <li><a href="#">Item</a></li>
+                                        <li class="uk-nav-divider"></li>
+                                        <li><a href="#">Item</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         </ul>
                     </div>
+        
                 </div>
             </div>
         </nav>
+        
     </header>
 {% endblock %}
 {% block main %}

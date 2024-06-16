@@ -5,7 +5,7 @@ from django.conf import settings
 from .views import ProjectDetailView
 
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.AllProjects, name='all_projects'),
 
 ]
 
