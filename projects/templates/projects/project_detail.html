@@ -7,24 +7,36 @@
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin uk-padding" uk-grid>
         {% get_prj_img project as prj_img %}
             <div class="uk-card-media-left uk-cover-container">
-                    <div class="uk-child-width@m" uk-grid uk-lightbox="animation: fade">
-                        {% for img in prj_img %}
-                            <div>
-                                <a class="uk-inline {% if not forloop.first %}uk-hidden{% endif %}" href="{{ img.image.url }}" data-caption="Caption {{ forloop.counter }}">
-                                    <img src="{{ img.image.url }}" alt="{{ project.title }} Image" width="1800" height="1200">
-                                </a>
-                            </div>
-                        {% endfor %}                    
-                    </div>
-            </div>
-        <div>
-            <div class="uk-h1 uk-margin-medium-left "><strong>{{ project.title }}</strong></div>
-            <div class="uk-card-body">
-                <h3 class="uk-card-title"><strong>Technology:</strong> {{ project.technology}}</h3>
-                <p>{{ project.description}}</p>
-            </div>
-        </div>
+                <div class="uk-child-width@m" uk-grid uk-lightbox="animation: fade">
+                    {% for img in prj_img %}
+                        <div class="uk-transition-toggle" tabindex="0">
+                            <a  class="uk-inline {% if not forloop.first %} uk-hidden {% endif %}" 
+                                id="preview" 
+                                href="{{ img.image.url }}" 
+                                data-caption="Caption {{ forloop.counter }}">
 
+                                <img src="{{ img.image.url }}" alt="{{ project.title }} Image" width="1800" height="1200">
+                                
+                            </a>                                   
+                            <div class="uk-position-center uk-panel uk-light uk-transition-slide-bottom">
+                                <span uk-icon="icon: eye; ratio: 3"></span>
+                            </div>
+                        </div>  
+                        <!-- <div class="uk-transition-toggle" tabindex="0">
+                            <a class="uk-inline {% if not forloop.first %} uk-hidden {% endif %}" id="preview" href="{{ img.image.url }}" data-caption="Caption {{ forloop.counter }}">
+                                <img src="{{ img.image.url }}" alt="{{ project.title }} Image" width="1800" height="1200">
+                            </a>
+                        </div> -->
+                    {% endfor %}
+                </div>
+            </div>
+            <div>
+                <div class="uk-h1 uk-margin-medium-left "><strong>{{ project.title }}</strong></div>
+                <div class="uk-card-body">
+                    <h3 class="uk-card-title"><strong>Technology:</strong> {{ project.technology}}</h3>
+                    <p>{{ project.description}}</p>
+                </div>
+            </div>
     </div>
 </main>
 {% endblock %}

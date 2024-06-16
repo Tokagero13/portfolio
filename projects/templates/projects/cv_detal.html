@@ -1,0 +1,38 @@
+<h1>{{ cv.personal_info.first_name }} {{ cv.personal_info.last_name }}</h1>
+<p>{{ cv.personal_info.email }}</p>
+<p>{{ cv.personal_info.phone }}</p>
+<p>{{ cv.personal_info.address }}</p>
+
+<h2>Summary</h2>
+<p>{{ cv.summary }}</p>
+
+<h2>Education</h2>
+{% for education in cv.education.all %}
+    <p>{{ education.degree }} in {{ education.field_of_study }} from {{ education.institution }}</p>
+    <p>{{ education.start_date }} - {{ education.end_date }}</p>
+    <p>{{ education.description }}</p>
+{% endfor %}
+
+<h2>Experience</h2>
+{% for experience in cv.experience.all %}
+    <p>{{ experience.job_title }} at {{ experience.company }}</p>
+    <p>{{ experience.start_date }} - {{ experience.end_date }}</p>
+    <p>{{ experience.description }}</p>
+{% endfor %}
+
+<h2>Skills</h2>
+<ul>
+    {% for skill in cv.skills.all %}
+        <li>{{ skill.name }} ({{ skill.proficiency }})</li>
+    {% endfor %}
+</ul>
+
+<h2>Projects</h2>
+{% for project in cv.projects.all %}
+    <h3>{{ project.title }}</h3>
+    <p>{{ project.description }}</p>
+    <p>{{ project.technology }}</p>
+    {% if project.image %}
+        <img src="{{ project.image.url }}" alt="{{ project.title }}">
+    {% endif %}
+{% endfor %}
