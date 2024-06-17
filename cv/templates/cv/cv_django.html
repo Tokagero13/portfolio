@@ -1,0 +1,31 @@
+{% extends "cv/layout.html" %}
+{% load static %}
+{% load custom_tags %}
+
+{% block title %}Profile Page{% endblock %}
+{% block main %}
+    <main class="uk-container uk-margin-top uk-margin-bottom">
+        <section class="uk-section uk-section-small">
+            {% for category, values in cv_project.items %} <!--Extract titles from each category -->
+                <h1 class="uk-heading-divider">{{ category }}</h1>
+                {% for experience in values %} 
+                    <div class="uk-card uk-card-default uk-card-body uk-margin-bottom">
+                        <div class="uk-margin">
+                            {% for field in experience_fields %} <!-- For each  -->
+                                {% with value=experience|get_attribute:field %}
+                                    {% if value is not None %}
+                                        <p class="uk-margin-remove-bottom">
+                                            <span uk-icon="icon: triangle-right"></span> 
+                                            <strong>{{ field|capfirst }}</strong>: {{ value }}
+                                        </p>
+                                    {% endif %}
+                                {% endwith %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </section>
+    </main>
+{% endblock main %}
+ 

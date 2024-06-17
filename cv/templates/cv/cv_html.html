@@ -1,0 +1,104 @@
+{% extends "cv/layout.html" %}
+{% load static %}
+{% load custom_tags %}
+
+{% block title %}Profile Page{% endblock %}
+{% block main %}
+    <head>
+        <style>
+            .profile-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px 0;
+            }
+            .profile-header h1 {
+                margin: 0;
+            }
+            .contact-info p, .profile p, .skills-list p, .experience-item p, .education-item p {
+                margin: 0;
+            }
+        </style>
+    </head>
+    <main class="uk-container uk-margin-large-top">
+        <body>
+            <div class="uk-container">
+                <div class="profile-header">
+                    <div>
+                        <h1>Sabit Shangerey</h1>
+                        <h3>Manager</h3>
+                    </div>
+                    <div class="contact-info">
+                        <p>+7 708 641 53 91</p>
+                        <p><a href="mailto:sabitshangery@gmail.com">sabitshangery@gmail.com</a></p>
+                        <p><a href="https://github.com/Tokagero13" target="_blank">GitHub Profile</a></p>
+                    </div>
+                </div>
+
+                <section class="profile">
+                    <hr class="uk-divider-icon">
+                    <h3>Profile</h3>
+                    <p>With a lifelong passion for education and robust organizational skills stemming from my background in Architecture, I excel at adopting innovative learning methods and utilizing English-language resources effectively. My culinary background has instilled in me a commitment to meticulous preparation, resilience under pressure, and unwavering adherence to high standards. Dedicated to ongoing development, I enthusiastically pursue new knowledge and opportunities, consistently striving for excellence while assuming full accountability for my work.</p>
+                </section>
+
+                <section class="skills">
+                    <hr class="uk-divider-icon uk-padding">
+                    <h3>Skills</h3>
+                    <div class="skills-list uk-grid-small uk-child-width-1-2@s" uk-grid>
+                        <div><p>★★★★★ Adaptability</p></div>
+                        <div><p>★★★★★ Computer Skills</p></div>
+                        <div><p>★★★★★ Fast Learner</p></div>
+                        <div><p>★★★★★ Ability to Work in a Team</p></div>
+                        <div><p>★★★★★ Customer Service</p></div>
+                        <div><p>★★★★★ Team Leadership</p></div>
+                        <div><p>★★★★★ Problem-Solving</p></div>
+                        <div><p>★★★★★ Attention to Detail</p></div>
+                        <div><p>★★★★★ Restaurant Operations</p></div>
+                        <div><p>★★★★★ Efficiency Optimization</p></div>
+                    </div>
+                </section>
+
+                <section class="experience">
+                    <hr class="uk-divider-icon uk-padding">
+                    <h3>Experience</h3>
+                    <div class="experience-item">
+                        <br>
+                        <h4>Manager at Forza</h4>
+                        <p>May 2022 – May 2024</p>
+                        <p>Led operations across multiple marketplaces, enhancing product visibility and sales. Specialized in sourcing products from China, ensuring cost-effective procurement and supply chain management. Negotiated with suppliers and freight forwarders to optimize terms and reduce logistics costs. Proficient in financial and warehouse operations, utilizing IC software for comprehensive management. Implemented efficient warehouse systems, streamlining storage and distribution. Demonstrated expertise in marketplace management and targeted advertising strategies.</p>
+                    </div>
+                    <div class="experience-item">
+                        <br>
+                        <h4>Culinary Specialist</h4>
+                        <p>January 2020 – January 2021</p>
+                        <p>Expertise in crafting salads, appetizers, pâtés, terrines, and galantines. Adept at artistic plating and visually appealing food displays. Active in innovative menu development for cold dishes. Proficient in ingredient sourcing, storage, and quality assurance. Maintains pristine and hygienic food preparation environments. Efficiently manages inventory to minimize waste. Provides leadership and training to junior culinary team members. Passionate about recipe innovation and culinary creations. Delivers exceptional food preparation and presentation for special events. Diligently monitors and optimizes costs to meet financial targets.</p>
+                    </div>
+                </section>
+
+                <section class="education">
+                    <hr class="uk-divider-icon uk-padding">
+                    <h3>Education</h3>
+                    <br>
+                    <div class="education-item">
+                        <h4>University of Huddersfield</h4>
+                        <p>September 2011 – May 2015</p>
+                        <p>Bachelor</p>
+                    </div>
+                    <div class="education-item">
+                        <hr class="uk-divider-small">
+                        <h4>Eurasian National University (ENU)</h4>
+                        <p>September 2017 – May 2018</p>
+                        <p>Bachelor</p>
+                    </div>
+                    <div class="education-item">
+                        <hr class="uk-divider-small">
+                        <h4>BHMS</h4>
+                        <p>September 2018 – December 2019</p>
+                        <p>Advanced Diploma</p>
+                        <hr class="uk-divider-small">
+                    </div>
+                </section>
+            </div>
+        </body>
+    </main>
+{% endblock main %}

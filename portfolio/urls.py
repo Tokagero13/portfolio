@@ -26,9 +26,8 @@ urlpatterns = [
     path('', index, name='home'),
     path('admin/', admin.site.urls),
     path('projects/', include('projects.urls'), name='projects'),
-
     # path('cv', CV_view, name='cv')
-    path('cv/', include('cv.urls')),  # Include the CV app URLs
+    path('cv/', include('cv.urls'), name='cv'),  # Include the CV app URLs
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

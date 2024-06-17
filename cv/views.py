@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import CV, PersonalInfo
+from .models import *
 from .forms import CVForm, PersonalInfoForm, EducationFormSet, ExperienceFormSet, SkillFormSet, CVProjectFormSet
 from projects.views import Project
 
@@ -14,9 +14,41 @@ menu = [
 projects = Project.objects.order_by('title').all()
 # project_img = ProjectImage.objects.all()
 
+
+# Initialize cv_project dictionary
+cv_project = {
+    'CVs': CV.objects.all(),
+    'Projects': CVProject.objects.all(),
+    'Skills': Skill.objects.all(),
+    'Experience': Experience.objects.all(),
+    'Education': Education.objects.all(),
+    'Personal Info': PersonalInfo.objects.all()
+}
+
+# Define your list of models
+models_list = [CV, CVProject, Skill, Experience, Education, PersonalInfo]
+
+# Initialize empty list to collect all field names
+experience_fields = []
+
+# Iterate over each model to fetch field names
+for model in models_list:
+    model_fields = [field.name for field in model._meta.get_fields() if field.name != 'id']
+    experience_fields.extend(model_fields)
+
+# Remove duplicates and maintain order (if necessary)
+experience_fields = list(dict.fromkeys(experience_fields))
+
+context = {
+    'cv_project': cv_project,
+    'experience_fields': experience_fields,
+    'projects': projects,
+    'menu': menu
+}
+
 # Create your views here.
 def index(request):
-    return render(request, 'cv/index.html')
+    return render(request, 'cv/index.html', context=context)
 
 def create_cv(request):
     if request.method == "POST":
@@ -36,7 +68,7 @@ def create_cv(request):
                     experience_formset.save()
                     skill_formset.save()
                     cv_project_formset.save()
-                    return redirect('cv/cv_detail', pk=cv.pk)
+                    return redirect('cv/cv_django.html', pk=cv.pk)
     else:
         personal_info_form = PersonalInfoForm()
         cv_form = CVForm()
@@ -54,6 +86,8 @@ def create_cv(request):
         'cv_project_formset': cv_project_formset,
     })
 
-def cv_detail(request, pk):
-    cv = CV.objects.get(pk=pk)
-    return render(request, 'cv/cv_detail.html', {'cv': cv})
+def cv_detail(request):
+    return render(request, 'cv/cv_django.html', context=context)
+
+def cv_html(request):
+    return render(request, 'cv/cv_html.html', context=context)

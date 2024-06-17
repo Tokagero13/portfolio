@@ -17,13 +17,21 @@
                 <div uk-navbar>
         
                     <div class="uk-navbar-left">
-                        <a class="uk-navbar-item uk-logo" href="{% url 'home' %}" aria-label="Back to Home">
+                        <a class="uk-navbar-item uk-logo" href="{% url 'cv_home' %}" aria-label="Back to Home">
                             <img src="{% static 'images/1.jpg' %}" alt="Logo" aria-label="Back to Home" style="height: 50px;">
                         </a>
                         
                         <ul class="uk-navbar-nav">
-                            <li class="uk-active"><a href="{% url 'cv' %}">Profile</a></li>
-                            <li>
+                            <li class="{% if selected %}uk-active{% endif %}">
+                                <a href="{% url 'cv_home' %}">Profile</a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a href="{% url 'cv_html' %}">HTML version</a></li>
+                                        <li><a href="{% url 'cv_django' %}">Django version</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="{% if selected %}uk-active{% endif %}">
                                 <a href="{% url 'all_projects' %}">Projects</a>
                                 <div class="uk-navbar-dropdown">
                                     <ul class="uk-nav uk-navbar-dropdown-nav">
@@ -59,7 +67,6 @@
                 </div>
             </div>
         </nav>
-        
     </header>
 {% endblock %}
 {% block main %}

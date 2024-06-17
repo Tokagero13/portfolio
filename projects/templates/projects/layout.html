@@ -22,7 +22,15 @@
                         </a>
                         
                         <ul class="uk-navbar-nav">
-                            <li class="uk-active"><a href="{% url 'cv' %}">Profile</a></li>
+                            <li class="{% if selected %}uk-active{% endif %}">
+                                <a href="{% url 'cv_home' %}">Profile</a>
+                                <div class="uk-navbar-dropdown">
+                                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                                        <li><a href="{% url 'cv_html' %}">HTML version</a></li>
+                                        <li><a href="{% url 'cv_django' %}">Django version</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li>
                                 <a href="{% url 'all_projects' %}">Projects</a>
                                 <div class="uk-navbar-dropdown">
