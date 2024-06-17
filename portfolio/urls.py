@@ -19,18 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.generic import RedirectView
-from projects.views import ProjectDetailView, CV_view, index
+from projects.views import ProjectDetailView, index
 
 
 urlpatterns = [
     path('', index, name='home'),
     path('admin/', admin.site.urls),
     path('projects/', include('projects.urls'), name='projects'),
-    path('projects/<int:pk>/', ProjectDetailView.as_view(), name='project_detail'),
-    # path('cv', CV_view, name='cv')
-    path('cv/', include('projects.urls')),  # Include the CV app URLs
-    path('projects/', include('projects.urls')),  # Your existing portfolio app URLs
 
+    # path('cv', CV_view, name='cv')
+    path('cv/', include('cv.urls')),  # Include the CV app URLs
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

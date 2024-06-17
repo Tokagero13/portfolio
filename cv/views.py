@@ -1,6 +1,22 @@
 from django.shortcuts import render, redirect
 from .models import CV, PersonalInfo
 from .forms import CVForm, PersonalInfoForm, EducationFormSet, ExperienceFormSet, SkillFormSet, CVProjectFormSet
+from projects.views import Project
+
+#Main variables
+menu = [
+    {'title': 'home', 'url_name': 'home'},
+    {'title': 'profile', 'url_name': 'cv'},
+    {'title': 'projects', 'url_name': 'projects'},
+    {'title': 'login', 'url_name': 'login'}
+    ]
+
+projects = Project.objects.order_by('title').all()
+# project_img = ProjectImage.objects.all()
+
+# Create your views here.
+def index(request):
+    return render(request, 'cv/index.html')
 
 def create_cv(request):
     if request.method == "POST":
@@ -20,7 +36,7 @@ def create_cv(request):
                     experience_formset.save()
                     skill_formset.save()
                     cv_project_formset.save()
-                    return redirect('cv_detail', pk=cv.pk)
+                    return redirect('cv/cv_detail', pk=cv.pk)
     else:
         personal_info_form = PersonalInfoForm()
         cv_form = CVForm()
@@ -29,7 +45,7 @@ def create_cv(request):
         skill_formset = SkillFormSet()
         cv_project_formset = CVProjectFormSet()
 
-    return render(request, 'create_cv.html', {
+    return render(request, 'cv/create_cv.html', {
         'personal_info_form': personal_info_form,
         'cv_form': cv_form,
         'education_formset': education_formset,
@@ -40,4 +56,4 @@ def create_cv(request):
 
 def cv_detail(request, pk):
     cv = CV.objects.get(pk=pk)
-    return render(request, 'cv_detail.html', {'cv': cv})
+    return render(request, 'cv/cv_detail.html', {'cv': cv})

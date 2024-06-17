@@ -2,6 +2,7 @@ from django import forms
 from django.forms import inlineformset_factory
 from .models import CV, PersonalInfo, Education, Experience, Skill, CVProject
 
+
 class PersonalInfoForm(forms.ModelForm):
     class Meta:
         model = PersonalInfo
