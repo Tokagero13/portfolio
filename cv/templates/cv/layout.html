@@ -17,7 +17,7 @@
                 <div uk-navbar>
         
                     <div class="uk-navbar-left">
-                        <a class="uk-navbar-item uk-logo" href="{% url 'cv_home' %}" aria-label="Back to Home">
+                        <a class="uk-navbar-item uk-logo" href="{% url 'home' %}" aria-label="Back to Home">
                             <img src="{% static 'images/1.jpg' %}" alt="Logo" aria-label="Back to Home" style="height: 50px;">
                         </a>
                         
@@ -88,6 +88,9 @@
                 </li>
                 <li>
                     <a href="https://github.com/Tokagero13" target="_blank" uk-icon="icon: github">github</a>
+                </li>
+                <li class="uk-align-right">
+                    <a href="{% url 'admin:index' %}" class="btn btn-primary">Go to Admin Panel</a>
                 </li>
             </ul>
         </div>

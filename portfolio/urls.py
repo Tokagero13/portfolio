@@ -24,7 +24,7 @@ from projects.views import ProjectDetailView, index
 
 urlpatterns = [
     path('', index, name='home'),
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('projects/', include('projects.urls'), name='projects'),
     # path('cv', CV_view, name='cv')
     path('cv/', include('cv.urls'), name='cv'),  # Include the CV app URLs
