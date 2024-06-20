@@ -73,26 +73,31 @@
     <!-- EMPTY -->
 {% endblock %}
 {% block footer %}
-    <footer class="uk-section uk-section-small uk-section-muted uk-text-left">
-        <div class="uk-container">
-            <h2>Contact: </h2>
-            <ul class="uk-list">
-                <li>
-                    <a uk-icon="icon: mail" href="mailto:sabitshangerey@gmail.com" >e-mail</a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/s_sabit" target="_blank" uk-icon="icon: instagram">instagram</a>
-                </li>
-                <li>
-                    <a href="https://wa.me/+77086415391" target="_blank" uk-icon="icon: whatsapp">wahtsapp</a>
-                </li>
-                <li>
-                    <a href="https://github.com/Tokagero13" target="_blank" uk-icon="icon: github">github</a>
-                </li>
-                <li class="uk-align-right">
-                    <a href="{% url 'admin:index' %}" class="btn btn-primary">Go to Admin Panel</a>
-                </li>
-            </ul>
+    <footer class="uk-section uk-margin-remove uk-section-small uk-section-muted">
+        <div class="uk-container uk-flex">
+            <div class="uk-container uk-margin-remove-left">
+                <h2>Contact: </h2>
+                <ul class="uk-list">
+                    <li>
+                        <a uk-icon="icon: mail" href="mailto:sabitshangerey@gmail.com" >e-mail</a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/s_sabit" target="_blank" uk-icon="icon: instagram">instagram</a>
+                    </li>
+                    <li>
+                        <a href="https://wa.me/+77086415391" target="_blank" uk-icon="icon: whatsapp">wahtsapp</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/Tokagero13" target="_blank" uk-icon="icon: github">github</a>
+                    </li>
+                    <!-- <li class="uk-align-right">
+                        <a href="{% url 'admin:index' %}" class="btn btn-primary">Go to Admin Panel</a>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="uk-container uk-margin-remove">
+                <a href="{% url 'admin:index' %}" class="btn btn-primary">Go to Admin Panel</a>
+            </div>
         </div>
     </footer>
 {% endblock %}

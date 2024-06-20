@@ -8,15 +8,18 @@
         <style>
             .profile-header {
                 display: flex;
-                align-items: center;
+                align-items: left;
                 justify-content: space-between;
                 padding: 20px 0;
             }
             .profile-header h1 {
                 margin: 0;
+                align-items: left;
+
             }
             .contact-info p, .profile p, .skills-list p, .experience-item p, .education-item p {
                 margin: 0;
+                align-items: right;
             }
         </style>
     </head>
@@ -24,7 +27,10 @@
         <body>
             <div class="uk-container">
                 <div class="profile-header">
-                    <div>
+                    <div class="uk-container uk-margin-remove">
+                        <img src="{% static 'images/1.jpg' %}" alt="my picture" width="200" height="200">
+                    </div>
+                    <div class="uk-container">
                         <h1>Sabit Shangerey</h1>
                         <h3>Manager</h3>
                     </div>
