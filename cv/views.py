@@ -50,6 +50,7 @@ context = {
 def index(request):
     return render(request, 'cv/index.html', context=context)
 
+
 def create_cv(request):
     if request.method == "POST":
         personal_info_form = PersonalInfoForm(request.POST)
