@@ -44,7 +44,6 @@
         
                     </div>
                     <div class="uk-navbar-right">
-        
                         <ul class="uk-navbar-nav">
                             <li>
                                 <a href="#">login/register</a>
@@ -73,33 +72,33 @@
     <!-- EMPTY -->
 {% endblock %}
 {% block footer %}
-    <footer class="uk-section uk-margin-remove uk-section-small uk-section-muted">
-        <div class="uk-container uk-flex">
-            <div class="uk-container uk-margin-remove-left">
-                <h2>Contact: </h2>
-                <ul class="uk-list">
-                    <li>
-                        <a uk-icon="icon: mail" href="mailto:sabitshangerey@gmail.com" >e-mail</a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/s_sabit" target="_blank" uk-icon="icon: instagram">instagram</a>
-                    </li>
-                    <li>
-                        <a href="https://wa.me/+77086415391" target="_blank" uk-icon="icon: whatsapp">wahtsapp</a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/Tokagero13" target="_blank" uk-icon="icon: github">github</a>
-                    </li>
-                    <!-- <li class="uk-align-right">
-                        <a href="{% url 'admin:index' %}" class="btn btn-primary">Go to Admin Panel</a>
-                    </li> -->
-                </ul>
-            </div>
-            <div class="uk-container uk-margin-remove">
-                <a href="{% url 'admin:index' %}" class="btn btn-primary">Go to Admin Panel</a>
-            </div>
+<footer class="uk-section uk-margin-remove uk-section-small uk-section-muted">
+    <div class="uk-container uk-flex uk-flex-between">
+        <div>
+            <h2>Contact: </h2>
+            <ul class="uk-list">
+                <li>
+                    <a uk-icon="icon: mail" href="mailto:sabitshangerey@gmail.com">e-mail</a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/s_sabit" target="_blank" uk-icon="icon: instagram">instagram</a>
+                </li>
+                <li>
+                    <a href="https://wa.me/+77086415391" target="_blank" uk-icon="icon: whatsapp">whatsapp</a>
+                </li>
+                <li>
+                    <a href="https://github.com/Tokagero13" target="_blank" uk-icon="icon: github">github</a>
+                </li>
+                <li>
+                    <a href="https://t.me/s_sabit" target="_blank" uk-icon="icon: social">telegram</a>
+                </li>
+            </ul>
         </div>
-    </footer>
+        <div>
+            <a href="{% url 'admin:index' %}" class="uk-button uk-button-deafult">Go to Admin Panel</a>
+        </div>
+    </div>
+</footer>
 {% endblock %}
 </body>
 </html>

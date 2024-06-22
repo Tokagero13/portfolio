@@ -1,8 +1,8 @@
 from django.db import models
 
 class PersonalInfo(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50, verbose_name="First name")
+    last_name = models.CharField(max_length=50, verbose_name="Last name")
     email = models.EmailField()
     phone = models.CharField(max_length=15)
     address = models.TextField()
@@ -14,9 +14,9 @@ class Education(models.Model):
     cv = models.ForeignKey('CV', related_name='education', on_delete=models.CASCADE)
     institution = models.CharField(max_length=200)
     degree = models.CharField(max_length=100)
-    field_of_study = models.CharField(max_length=100)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    field_of_study = models.CharField(max_length=100, verbose_name="Field of study")
+    start_date = models.DateField(verbose_name="Start date")
+    end_date = models.DateField(verbose_name="End date")
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):
@@ -24,10 +24,10 @@ class Education(models.Model):
 
 class Experience(models.Model):
     cv = models.ForeignKey('CV', related_name='experience', on_delete=models.CASCADE)
-    job_title = models.CharField(max_length=100)
+    job_title = models.CharField(max_length=100, verbose_name="Job title")
     company = models.CharField(max_length=200)
-    start_date = models.DateField()
-    end_date = models.DateField()
+    start_date = models.DateField(verbose_name="Start date")
+    end_date = models.DateField(verbose_name="End date")
     description = models.TextField(blank=True, null=True)
 
     def __str__(self):

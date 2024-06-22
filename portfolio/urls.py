@@ -19,14 +19,14 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.generic import RedirectView
-from projects.views import ProjectDetailView, index
+from projects.views import index, auth
 
 
 urlpatterns = [
     path('', index, name='home'),
+    path('auth', auth, name='auth'),
     path('admin/', admin.site.urls, name='admin'),
     path('projects/', include('projects.urls'), name='projects'),
-    # path('cv', CV_view, name='cv')
     path('cv/', include('cv.urls'), name='cv'),  # Include the CV app URLs
 ]
 

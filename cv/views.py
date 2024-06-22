@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import CVForm, PersonalInfoForm, EducationFormSet, ExperienceFormSet, SkillFormSet, CVProjectFormSet
+from .forms import CVForm, PersonalInfoForm
 from projects.views import Project
 
 #Main variables
@@ -17,16 +17,15 @@ projects = Project.objects.order_by('title').all()
 
 # Initialize cv_project dictionary
 cv_project = {
-    'CVs': CV.objects.all(),
-    'Projects': CVProject.objects.all(),
-    'Skills': Skill.objects.all(),
+    'Personal Info': PersonalInfo.objects.all(),
     'Experience': Experience.objects.all(),
     'Education': Education.objects.all(),
-    'Personal Info': PersonalInfo.objects.all()
+    'Projects': CVProject.objects.all(),
+    'Skills': Skill.objects.all(),
 }
 
 # Define your list of models
-models_list = [CV, CVProject, Skill, Experience, Education, PersonalInfo]
+models_list = [CVProject, Skill, Experience, Education, PersonalInfo]
 
 # Initialize empty list to collect all field names
 experience_fields = []

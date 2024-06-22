@@ -14,6 +14,7 @@ class ProjectAdmin(admin.ModelAdmin):
     inlines = [ProjectImageInline]
     list_display = ('title', 'technology')
     search_fields = ('title', 'technology')
+    prepopulated_fields = {"slug": ("title",)}
 
 class ProjectImageAdmin(admin.ModelAdmin):
     list_display = ('image', 'project_id')

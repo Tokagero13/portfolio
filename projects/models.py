@@ -18,7 +18,11 @@ class Project(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     technology = models.CharField(max_length=100)
-    
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name = "URL")    
+    time_create = models.DateTimeField(auto_now_add=True, verbose_name = "Date created")
+    time_update = models.DateTimeField(auto_now=True, verbose_name = "Date modified")
+    git_url = models.URLField(blank=True, null=True, verbose_name="URL address (git, leetcode...)")
+
     def __str__(self):
         return self.title
     

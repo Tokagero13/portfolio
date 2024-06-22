@@ -15,26 +15,27 @@ menu = [
 projects = Project.objects.order_by('title').all()
 project_img = ProjectImage.objects.all()
 
+context = {
+    'projects': projects,
+    'menu': menu
+}
+
 # Create your views here.
 def index(request):
-    context = {
-        'projects': projects,
-        'menu': menu
-    }
     return render(request, 'projects/index.html', context = context)
 
+def auth(request):
+    return render(request, 'projects/auth.html', context=context)
+
 def CV_view(request):
-    my_cv = CV.objects.all()
-    return render(request, 'projects/cv.html', {
-        'CV': my_cv,
-        'projects': projects
-        })
+    return render(request, 'projects/cv.html', context=context)
 
 def AllProjects(request):
     return render(request, 'projects/all_projects.html', {
         'projects': projects,
         'project_img': project_img
-    })
+        }
+    )
 
 class ProjectDetailView(DetailView):
     model = Project
