@@ -4,12 +4,12 @@
 {% block main %}
   <main class="uk-container uk-margin-small-top uk-margin-small-bottom">
     <div class="uk-child-width-1-3@m uk-text-center" uk-grid>
-      {% for project in projects %}
+      {% for project_detail in projects %}
         <div>
-            <a href="{% url 'project_detail' project.pk %}">
+            <a href="{% url 'project_detail' project_detail.slug %}">
                 <div class="uk-card uk-card-hover uk-card-media-center">
                     <div class="uk-card-media-top">
-                        {% with project.images.first as first_image %}
+                        {% with project_detail.images.first as first_image %}
                             {% if first_image %}
                                 <img src="{{ first_image.image.url }}" alt="{{ project.title }}" class="uk-height-medium">
                             {% else %}
@@ -18,13 +18,13 @@
                         {% endwith %}
                     </div>
                     <div class="uk-card-body uk-text-left">
-                        <h3 class="uk-card-title">{{ project.title }}</h3>
-                        <p>{{ project.description|slice:":250" }}
-                            {% if project.description|length > 250 %}
+                        <h3 class="uk-card-title">{{ project_detail.title }}</h3>
+                        <p>{{ project_detail.description|slice:":250" }}
+                            {% if project_detail.description|length > 250 %}
                                 ...
                             {% endif %}
                         </p>
-                        <p><strong>Technology:</strong> {{ project.technology }}</p>
+                        <p><strong>Technology:</strong> {{ project_detail.technology }}</p>
                     </div>
                 </div>
             </a>

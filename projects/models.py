@@ -27,7 +27,7 @@ class Project(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse("project_detail", kwargs={"pk": self.pk})
+        return reverse("project_detail", kwargs={"project_slug": self.slug})
     
     class Meta:
         verbose_name = 'Project'
@@ -39,6 +39,6 @@ class ProjectImage(models.Model):
     def __str__(self):
         return f"{self.project.title} Image"
     
-    class Meta:
+    class Meta: 
         verbose_name = 'Images (for Project)'
         verbose_name_plural = 'Images (for Project)'

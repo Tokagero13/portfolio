@@ -26,7 +26,7 @@ urlpatterns = [
     path('', index, name='home'),
     path('auth', auth, name='auth'),
     path('admin/', admin.site.urls, name='admin'),
-    path('projects/', include('projects.urls'), name='projects'),
+    path('projects/', include('projects.urls')),
     path('cv/', include('cv.urls'), name='cv'),  # Include the CV app URLs
 ]
 

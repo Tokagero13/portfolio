@@ -1,8 +1,6 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render
 from .models import *
 from django.views.generic.detail import DetailView
-from django.http import HttpResponse
-
 
 #Main variables
 menu = [
@@ -40,7 +38,9 @@ def AllProjects(request):
 class ProjectDetailView(DetailView):
     model = Project
     template_name = 'projects/project_detail.html'
-    context_object_name = 'project'
+    context_object_name = 'project_detail'
+    slug_field = 'slug'
+    slug_url_kwarg = 'project_slug'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -1,11 +1,11 @@
 {% extends "projects\layout.html" %}
 {% load static %}
 {% load projects_tags %}
-{% block title %}{{ project.title }}{% endblock %} 
+{% block title %}{{ project_detail.title }}{% endblock %} 
 {% block main %}
 <main class="uk-container uk-margin-large">
     <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin uk-padding" uk-grid>
-        {% get_prj_img project as prj_img %}
+        {% get_prj_img project_detail as prj_img %}
         <div class="uk-card-media-left uk-cover-container">
             <div class="uk-child-width@m" uk-grid uk-lightbox="animation: fade">
                 {% for img in prj_img %}
@@ -15,7 +15,7 @@
                             href="{{ img.image.url }}" 
                             data-caption="Caption {{ forloop.counter }}">
 
-                            <img src="{{ img.image.url }}" alt="{{ project.title }} Image" width="1800" height="1200">
+                            <img src="{{ img.image.url }}" alt="{{ project_detail.title }} Image" width="1800" height="1200">
                             
                         </a>                                   
                         <div class="uk-position-center uk-panel uk-light uk-transition-slide-bottom">
@@ -47,12 +47,12 @@
         </div> {% endcomment %}
         
         <div>
-            <div class="uk-h1 uk-margin-medium-left "><strong>{{ project.title }}</strong></div>
+            <div class="uk-h1 uk-margin-medium-left "><strong>{{ project_detail.title }}</strong></div>
             <div class="uk-card-body">
-                <h3 class="uk-card-title"><strong>Technology:</strong> {{ project.technology }}</h3>
+                <h3 class="uk-card-title"><strong>Technology:</strong> {{ project_detail.technology }}</h3>
                 <h4>Description</h2>
-                <p>{{ project.description|linebreaks }}</p>
-                <a class="uk-button uk-button-width-1-1 uk-button-secondary" href="{{ project.git_url }}">Link to project</a>
+                <p>{{ project_detail.description|linebreaks }}</p>
+                <a class="uk-button uk-button-width-1-1 uk-button-secondary" href="{{ project_detail.git_url }}">Link to project</a>
             </div>
         </div>
     </div>
