@@ -11,7 +11,7 @@ class PersonalInfo(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 class Messages(models.Model):
-    user = models.ForeignKey('PersonalInfo', related_name='messages', on_delete=models.CASCADE)
+    user = models.ForeignKey('PersonalInfo', related_name='messages', on_delete=models.CASCADE, verbose_name='messages')
     contact_us_msg = models.CharField(max_length=250, verbose_name='Contact Us message')
     time_created = models.DateTimeField(auto_now_add=True, verbose_name='Time created')
 

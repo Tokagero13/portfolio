@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import CVForm, ContactUsForm, PersonalInfoForm, ContactUs_extraForm
+from .forms import CVForm, Contact_us_extraFormSet, ContactUsForm, PersonalInfoForm, Contact_us_extraFormSet
 from projects.views import Project
 
 #Main variables
@@ -55,13 +55,13 @@ def contact_us(request):
         form = ContactUsForm(request.POST)
         if form.is_valid():
             form.save()
-            extra_form = ContactUs_extraForm(request.POST, instance=Messages)
+            extra_form = Contact_us_extraFormSet(request.POST)
             if extra_form.is_valid():
                 extra_form.save()
                 return redirect('project/index.html')
     else:
         form = ContactUsForm()
-        extra_form = ContactUs_extraForm()
+        extra_form = Contact_us_extraFormSet()
 
     context['form'] = form
     context['extra_form'] = extra_form

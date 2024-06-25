@@ -8,7 +8,7 @@ class ContactUsForm(forms.ModelForm):
         fields = ['first_name','last_name','email', 'phone']
     
 #----------------------------------------------
-Contact_us_extraFormSet = inlineformset_factory(PersonalInfo, Messages, fields=['Contact_us_msg'], extra=1)
+Contact_us_extraFormSet = inlineformset_factory(PersonalInfo, Messages, fields=['contact_us_msg'], extra=1)
 
 # class ContactUs_extraForm(forms.Form):
 #     message = forms.CharField(label='Message', widget=forms.Textarea)
