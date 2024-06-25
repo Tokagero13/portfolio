@@ -10,6 +10,14 @@ class PersonalInfo(models.Model):
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
+class Messages(models.Model):
+    user = models.ForeignKey('PersonalInfo', related_name='messages', on_delete=models.CASCADE)
+    contact_us_msg = models.CharField(max_length=250, verbose_name='Contact Us message')
+    time_created = models.DateTimeField(auto_now_add=True, verbose_name='Time created')
+
+    def __str__(self):
+        return f"{self.time_created} message from {self.user.first_name}: \n{self.contact_us_msg}"
+
 class Education(models.Model):
     cv = models.ForeignKey('CV', related_name='education', on_delete=models.CASCADE)
     institution = models.CharField(max_length=200)

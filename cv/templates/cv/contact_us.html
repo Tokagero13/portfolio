@@ -1,0 +1,33 @@
+{% extends "projects\layout.html" %}
+{% load static %}
+{% load custom_tags %}
+{% block title %}Contact Us{% endblock %}
+{% block main %}
+<main class="uk-container uk-margin-top uk-margin-bottom">
+    <form action="{% url 'contact_us' %}" method="post">
+        {% csrf_token %}
+        <div class="form-error">
+            {{ form.non_field_errors }}
+        </div>
+        {% for field in form %}
+            <p>
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+            </p>
+            <div class="form-error">
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        {% for field in extra_form %}
+            <p>
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+            </p>
+            <div class="form-error">
+                {{ field.errors }}
+            </div>
+        {% endfor %}
+        <button type="submit">Send</button>
+    </form>
+</main>
+{% endblock %}
