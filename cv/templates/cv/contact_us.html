@@ -18,6 +18,15 @@
                 {{ field.errors }}
             </div>
         {% endfor %}
+
+        {% comment %} <p>
+            <label for="{{ extra_form.id_for_label }}">{{ extra_form.label }}</label>
+            {{ extra_form.messages }}
+        </p>
+        <div class="form-error">
+            {{ field.errors }}
+        </div> {% endcomment %}
+
         {% for field in extra_form %}
             <p>
                 <label for="{{ field.id_for_label }}">{{ field.label }}</label>

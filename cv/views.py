@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import CVForm, Contact_us_extraFormSet, ContactUsForm, PersonalInfoForm, Contact_us_extraFormSet
+from .forms import CVForm, ContactUsForm, PersonalInfoForm, Contact_us_extraFormSet, ContactUs_extraForm
 from projects.views import Project
 
 #Main variables
@@ -46,22 +46,23 @@ context = {
 
 # Create your views here.
 def index(request):
-    form = ContactUsForm()
-    context['form'] = form
     return render(request, 'cv/index.html', context=context )
 
 def contact_us(request):
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
-        if form.is_valid():
-            form.save()
-            extra_form = Contact_us_extraFormSet(request.POST)
-            if extra_form.is_valid():
-                extra_form.save()
-                return redirect('project/index.html')
+        extra_form = ContactUs_extraForm(request.POST)
+        if form.is_valid() and extra_form.is_valid():
+            personal_info = form.save()
+            message = Messages(
+                contact_us_msg=extra_form.cleaned_data['message'],
+                user=personal_info
+            )
+            message.save()
+            return redirect('project/index.html')
     else:
         form = ContactUsForm()
-        extra_form = Contact_us_extraFormSet()
+        extra_form = ContactUs_extraForm()
 
     context['form'] = form
     context['extra_form'] = extra_form

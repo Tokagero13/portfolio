@@ -12,7 +12,7 @@ class PersonalInfo(models.Model):
 
 class Messages(models.Model):
     user = models.ForeignKey('PersonalInfo', related_name='messages', on_delete=models.CASCADE, verbose_name='messages')
-    contact_us_msg = models.CharField(max_length=250, verbose_name='Contact Us message')
+    contact_us_msg = models.TextField(max_length=250, verbose_name='Contact Us message')
     time_created = models.DateTimeField(auto_now_add=True, verbose_name='Time created')
 
     def __str__(self):

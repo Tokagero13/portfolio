@@ -10,16 +10,16 @@ class ContactUsForm(forms.ModelForm):
 #----------------------------------------------
 Contact_us_extraFormSet = inlineformset_factory(PersonalInfo, Messages, fields=['contact_us_msg'], extra=1)
 
-# class ContactUs_extraForm(forms.Form):
-#     message = forms.CharField(label='Message', widget=forms.Textarea)
-#     METHODS = [
-#         ('whatsapp', 'WhatsApp'),
-#         ('telegram', 'Telegram'),
-#         ('email', 'Email'),
-#         ('phone_call', 'Phone call'),
-#         ('any', 'Any'),
-#     ]
-#     contact_method = forms.ChoiceField(choices=METHODS, label='Contact Method', initial=True, required=True)
+class ContactUs_extraForm(forms.Form):
+    message = forms.CharField(label='Message', widget=forms.Textarea, required=False)
+    METHODS = [
+        ('whatsapp', 'WhatsApp'),
+        ('telegram', 'Telegram'),
+        ('email', 'Email'),
+        ('phone_call', 'Phone call'),
+        ('any', 'Any'),
+    ]
+    contact_method = forms.ChoiceField(choices=METHODS, label='Contact Method', initial='any')
 
 class PersonalInfoForm(forms.ModelForm):
     class Meta:
