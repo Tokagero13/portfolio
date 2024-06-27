@@ -1,10 +1,22 @@
+import re
 from django.db import models
+from django.core.validators import RegexValidator
+from django.forms import ValidationError
+
+def validate_phone_number(value):
+    if not value.isdigit():
+        raise ValidationError('Phone number must contain only numeric digits.')
+
+def validate_name_format(value):
+    pattern = r'^[A-Za-z\s]*$'
+    if not re.match(pattern, value):
+        raise ValidationError('Name must contain only letters and spaces.')
 
 class PersonalInfo(models.Model):
-    first_name = models.CharField(max_length=50, verbose_name="First name")
-    last_name = models.CharField(max_length=50, verbose_name="Last name")
+    first_name = models.CharField(max_length=50, verbose_name="First name", validators=[validate_name_format])
+    last_name = models.CharField(max_length=50, verbose_name="Last name", validators=[validate_name_format])
     email = models.EmailField()
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=15, validators=[validate_phone_number])
     address = models.TextField()
 
     def __str__(self):
@@ -12,9 +24,9 @@ class PersonalInfo(models.Model):
 
 class Messages(models.Model):
     user = models.ForeignKey('PersonalInfo', related_name='messages', on_delete=models.CASCADE, verbose_name='messages')
-    contact_us_msg = models.TextField(max_length=250, verbose_name='Contact Us message')
+    contact_us_msg = models.TextField(max_length=250, verbose_name='Message')
     time_created = models.DateTimeField(auto_now_add=True, verbose_name='Time created')
-
+    
     def __str__(self):
         return f"{self.time_created} message from {self.user.first_name}: \n{self.contact_us_msg}"
 

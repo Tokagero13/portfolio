@@ -20,6 +20,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.generic import RedirectView
 from projects.views import index, auth
+from cv.views import contact_us
 
 
 urlpatterns = [
@@ -28,6 +29,7 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('projects/', include('projects.urls')),
     path('cv/', include('cv.urls'), name='cv'),  # Include the CV app URLs
+    path('contact_us', contact_us, name="contact_us")
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

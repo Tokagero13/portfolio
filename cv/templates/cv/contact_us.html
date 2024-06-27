@@ -3,40 +3,58 @@
 {% load custom_tags %}
 {% block title %}Contact Us{% endblock %}
 {% block main %}
-<main class="uk-container uk-margin-top uk-margin-bottom">
-    <form action="{% url 'contact_us' %}" method="post">
-        {% csrf_token %}
-        <div class="form-error">
-            {{ form.non_field_errors }}
+<main class="uk-container uk-margin-top uk-margin-bottom uk-flex uk-flex-center">
+    <form action="{% url 'contact_us' %}" method="post" class="uk-form-stacked">
+        {% if form.non_field_errors %}
+            <div class="uk-alert uk-alert-danger uk-margin-bottom" uk-alert>
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+        <div class="uk-child-width-1-2@m" uk-grid>
+            <div>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="uk-margin">
+                        <label class="uk-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        <div class="uk-form-controls">
+                            {{ field }}
+                            <div class="form-error uk-text-danger">
+                                {{ field.errors }}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+                {% comment %}
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="{{ extra_form.id_for_label }}">{{ extra_form.label }}</label>
+                    <div class="uk-form-controls">
+                        {{ extra_form.messages }}
+                        <div class="form-error uk-text-danger">
+                            {{ extra_form.errors }}
+                        </div>
+                    </div>
+                </div>
+                {% endcomment %}
+            </div>
+            <div>
+                {% for field in extra_form %}
+                <div class="uk-margin">
+                    <label class="uk-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    <div class="uk-form-controls">
+                        {{ field }}
+                        <div class="form-error uk-text-danger">
+                            {{ field.errors }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
         </div>
-        {% for field in form %}
-            <p>
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field }}
-            </p>
-            <div class="form-error">
-                {{ field.errors }}
-            </div>
-        {% endfor %}
-
-        {% comment %} <p>
-            <label for="{{ extra_form.id_for_label }}">{{ extra_form.label }}</label>
-            {{ extra_form.messages }}
-        </p>
-        <div class="form-error">
-            {{ field.errors }}
-        </div> {% endcomment %}
-
-        {% for field in extra_form %}
-            <p>
-                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                {{ field }}
-            </p>
-            <div class="form-error">
-                {{ field.errors }}
-            </div>
-        {% endfor %}
-        <button type="submit">Send</button>
+        <div class="uk-margin">
+            <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" type="submit">Send</button>
+        </div>
     </form>
+
 </main>
 {% endblock %}

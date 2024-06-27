@@ -12,14 +12,14 @@ class ProjectImageInline(admin.TabularInline):
 
 class ProjectAdmin(admin.ModelAdmin):
     inlines = [ProjectImageInline]
-    list_display = ('title', 'technology')
-    search_fields = ('title', 'technology')
+    list_display = ('title', 'technology', 'git_url')
+    search_fields = ('title', 'technology', 'git_url')
     prepopulated_fields = {"slug": ("title",)}
 
 class ProjectImageAdmin(admin.ModelAdmin):
-    list_display = ('image', 'project_id')
-    searach_fields = ('image', 'project_id')
+    list_display = ('project', 'image', 'project_id')
+    searach_fields = ('project', 'project_id')
 
 admin.site.register(Project, ProjectAdmin)
-admin.site.register(ProjectImage)
+admin.site.register(ProjectImage, ProjectImageAdmin)
 

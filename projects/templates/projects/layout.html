@@ -95,7 +95,13 @@
             </ul>
         </div>
         <div>
-            <a href="{% url 'admin:index' %}" class="uk-button uk-button-deafult">Go to Admin Panel</a>
+            <ul class="uk-list">
+                <li>
+                    <a href="{% url 'admin:index' %}" class="uk-button uk-button-deafult">Go to Admin Panel</a>
+                </li>
+                <li>
+                    <a href="{% url 'contact_us' %}" class="uk-button uk-button-deafult">Contact us</a>
+                </li>
         </div>
     </div>
 </footer>
