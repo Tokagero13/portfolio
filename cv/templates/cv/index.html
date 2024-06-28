@@ -4,49 +4,49 @@
 
 {% block title %}Profile Page{% endblock %}
 {% block main %}
-    <main class="uk-container uk-margin-top uk-margin-bottom">
-        <div class="uk-child-width@s uk-light" uk-grid>
+<main class="uk-container uk-margin-top uk-margin-bottom">
+    <div class="uk-child-width@s uk-light" uk-grid>
+        <div>
             <div>
-                <div>
-                    <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url({% static 'images/cv_main.jpg' %});">
-                        <div class="uk-h1 uk-text-bold uk-text-center uk-animation-kenburns" style="color: black"><p>Sabit Shangerey:</p><p>Project Manager and Culinary Expert</p></div>
-                    </div> 
-                </div>
-                
+                <div class="uk-background-cover uk-height-medium uk-panel uk-flex uk-flex-center uk-flex-middle" style="background-image: url({% static 'images/cv_main.jpg' %});">
+                    <div class="uk-h1 uk-text-bold uk-text-center uk-animation-kenburns" style="color: black"><p>Sabit Shangerey:</p><p>Project Manager and Culinary Expert</p></div>
+                </div> 
             </div>
+            
         </div>
-        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
-            <div class="uk-card-media-left uk-cover-container">
-                <img src="{% static 'images/html_port.jpg' %}" alt="" uk-cover>
-                <canvas width="600" height="400"></canvas>
-            </div>
-            <div>
-                <div class="uk-card-body">
-                    <h3 class="uk-card-title">HTML version</h3>
-                    <p>{{ "There is a representative page of HTML version of my CV."|slice:":75" }}</p>
-                </div>
-                <hr class="uk-divider-icon">
-                <p uk-margin>
-                    <a class="uk-button uk-button-secondary uk-align-center uk-button-large uk-width-1-2" href="{% url 'cv_html'%}">HTML</a>
-                </p>
-            </div>
+    </div>
+    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+        <div class="uk-card-media-left uk-cover-container">
+            <img src="{% static 'images/html_port.jpg' %}" alt="" uk-cover>
+            <canvas width="600" height="400"></canvas>
         </div>
-        <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
-            <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
-                <img src="{% static 'images/django_port3.jpg' %}" alt="" uk-cover>
-                <canvas width="600" height="400"></canvas>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">HTML version</h3>
+                <p>{{ "There is a representative page of HTML version of my CV."|slice:":75" }}</p>
             </div>
-            <div>
-                <div class="uk-card-body">
-                    <h3 class="uk-card-title">Djano version</h3>
-                    <p>{{ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."|slice:":75" }}</p>
-                </div>
-                <hr class="uk-divider-icon">
-                <p uk-margin>
-                    <a class="uk-button uk-button-secondary uk-align-center uk-button-large uk-width-1-2" href="{% url 'cv_django'%}">DJANGO</a>
-                </p>
-            </div>
+            <hr class="uk-divider-icon">
+            <p uk-margin>
+                <a class="uk-button uk-button-secondary uk-align-center uk-button-large uk-width-1-2" href="{% url 'cv_html'%}">HTML</a>
+            </p>
         </div>
-    </main>
+    </div>
+    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+        <div class="uk-flex-last@s uk-card-media-right uk-cover-container">
+            <img src="{% static 'images/django_port3.jpg' %}" alt="" uk-cover>
+            <canvas width="600" height="400"></canvas>
+        </div>
+        <div>
+            <div class="uk-card-body">
+                <h3 class="uk-card-title">Djano version</h3>
+                <p>{{ "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt."|slice:":75" }}</p>
+            </div>
+            <hr class="uk-divider-icon">
+            <p uk-margin>
+                <a class="uk-button uk-button-secondary uk-align-center uk-button-large uk-width-1-2" href="{% url 'cv_django'%}">DJANGO</a>
+            </p>
+        </div>
+    </div>
+</main>
 {% endblock main %}
  

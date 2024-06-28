@@ -1,6 +1,7 @@
 from django.shortcuts import get_object_or_404, render
 from .models import *
 from django.views.generic.detail import DetailView
+from django.core.paginator import Paginator
 
 #Main variables
 menu = [
@@ -29,13 +30,17 @@ def CV_view(request):
     return render(request, 'projects/cv.html', context=context)
 
 def AllProjects(request):
-    return render(request, 'projects/all_projects.html', {
-        'projects': projects,
-        'project_img': project_img
-        }
+    context['project_img'] = project_img
+    paginator = Paginator(projects, 3)  # Show 25 contacts per page.
+
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    context['page_obj'] = page_obj
+    return render(request, 'projects/all_projects.html', context=context
     )
 
 class ProjectDetailView(DetailView):
+    paginate_by = 3
     model = Project
     template_name = 'projects/project_detail.html'
     context_object_name = 'project_detail'

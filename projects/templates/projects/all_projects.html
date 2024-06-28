@@ -3,8 +3,9 @@
 {% block title %}Projects{% endblock %} 
 {% block main %}
   <main class="uk-container uk-margin-small-top uk-margin-small-bottom">
-    <div class="uk-child-width-1-3@m uk-text-center" uk-grid>
-      {% for project_detail in projects %}
+    <div class="uk-child-width-1-3@m uk-text-center uk-flex uk-flex-center" uk-grid>
+    {% comment %} {% for project_detail in projects %} {% endcomment %}
+    {% for project_detail in page_obj %}
         <div>
             <a href="{% url 'project_detail' project_detail.slug %}">
                 <div class="uk-card uk-card-hover uk-card-media-center">
@@ -18,7 +19,7 @@
                         {% endwith %}
                     </div>
                     <div class="uk-card-body uk-text-left">
-                        <h3 class="uk-card-title">{{ project_detail.title }}</h3>
+                        <h4 class="uk-card-title">{{ project_detail.title }}</h4>
                         <p>{{ project_detail.description|slice:":250" }}
                             {% if project_detail.description|length > 250 %}
                                 ...
@@ -30,7 +31,37 @@
             </a>
         </div>
     {% endfor %}
-
+    </div>
+    {% comment %} <ul class="uk-dotnav uk-margin-bottom uk-flex uk-flex-center">
+        {% for p in paginator.page_range %}
+            <li class="uk-active paginator">
+                <a href="?page={{ p }}">{{ p }}</a>
+            </li>
+        {% endfor %}
+    </ul> {% endcomment %}
+    <div class="pagination uk-margin-bottom uk-margin uk-text-large uk-text-center">
+        <div>
+            <span class="current">
+                <h3>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.</h3>
+            </span>
+        </div>
+        <div>
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                <div class="uk-text-center uk-flex uk-flex-center">
+                    <a class="uk-margin-right" href="?page=1"><h4>&laquo; first</h4></a>
+                    <a href="?page={{ page_obj.previous_page_number }}"><h4>previous</h4></a>
+                </div>
+                {% endif %}
+                {% if page_obj.has_next %}
+                <div class="uk-text-center uk-flex uk-flex-center">
+                    <a class="uk-margin-right" href="?page={{ page_obj.next_page_number }}"><h4>next</h4></a>
+                    <a class="uk-float" href="?page={{ page_obj.paginator.num_pages }}"><h4>last &raquo;</h4></a>
+                </div>
+                {% endif %}
+            </span>
+        </div>
     </div>
   </main>
-{% endblock main %}
+
+  {% endblock main %}
