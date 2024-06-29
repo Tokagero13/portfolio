@@ -11,9 +11,10 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-{% cache 60 header %}
 {% block header %}
     <header>
+        {% cache 60 header %}
+
         <nav class="uk-navbar-container">
             <div class="uk-container">
                 <div uk-navbar>
@@ -43,8 +44,9 @@
                                 </div>
                             </li>
                         </ul>
-        
                     </div>
+                    {% endcache %}x
+
                     <div class="uk-navbar-right">
                         <ul class="uk-navbar-nav">
                             {% if request.user.is_authenticated  %}
@@ -65,10 +67,8 @@
                 </div>
             </div>
         </nav>
-        
     </header>
 {% endblock %}
-{% endcache %}
 {% block main %}
     <!-- EMPTY -->
     <a href="#" uk-totop uk-scroll></a>
