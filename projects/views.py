@@ -1,23 +1,83 @@
-from django.shortcuts import get_object_or_404, render
+from winreg import CreateKey
+from django.shortcuts import get_object_or_404, render, redirect
+from django.urls import reverse_lazy
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
+from django.views import View
+
+from django.contrib.auth import login, logout
+
+from projects.forms import RegisterUserForm
 from .models import *
+
+
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView
+from django.views.generic.list import ListView
+
 from django.core.paginator import Paginator
+from projects.utils import *
 
-#Main variables
-menu = [
-    {'title': 'home', 'url_name': 'home'},
-    {'title': 'profile', 'url_name': 'cv'},
-    {'title': 'projects', 'url_name': 'projects'},
-    {'title': 'login', 'url_name': 'login'}
-    ]
+class AuthView(View):
+    template_name = 'projects/auth.html'
 
-projects = Project.objects.order_by('title').all()
-project_img = ProjectImage.objects.all()
+    def get(self, request, *args, **kwargs):
+        context = {
+            'register_form': RegisterUserForm(),
+            'login_form': AuthenticationForm(),
+        }
+        return render(request, self.template_name, context)
 
-context = {
-    'projects': projects,
-    'menu': menu
-}
+    def post(self, request, *args, **kwargs):
+        if 'register' in request.POST:
+            register_form = RegisterUserForm(request.POST)
+            login_form = AuthenticationForm()
+            if register_form.is_valid():
+                user = register_form.save()
+                login(request, user)
+                return redirect('home')
+        elif 'login' in request.POST:
+            register_form = RegisterUserForm()
+            login_form = AuthenticationForm(request, data=request.POST)
+            if login_form.is_valid():
+                user = login_form.get_user()
+                login(request, user)
+                return redirect('home')
+        else:
+            register_form = RegisterUserForm()
+            login_form = AuthenticationForm()
+        
+        context = {
+            'register_form': register_form,
+            'login_form': login_form,
+        }
+        return render(request, self.template_name, context)
+
+def logout_user(request):
+    logout(request)
+    return redirect('auth')
+
+# class RegisterUser(CreateView):
+#     form_class = RegisterUserForm
+#     template_name = 'projects/auth.html'
+#     # success_url = reverse_lazy('auth')
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context
+    
+#     def get_success_url(self):
+#         return reverse_lazy('home')
+    
+# class LoginUser(LoginView):
+#     form_class = AuthenticationForm
+#     template_name = 'projects/login.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         return context
+    
+
 
 # Create your views here.
 def index(request):
@@ -49,7 +109,9 @@ class ProjectDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['projects'] = Project.objects.all()
-        # Fetch images related to this project
         context['project_img'] = self.object.images.all()
         return context
+    
+    # def get_queryset(self):
+    #     return projects.objects.select_related('project')
+    

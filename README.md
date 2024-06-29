@@ -10,7 +10,7 @@ For a detailed overview of my professional background, you can find my CV in PDF
 Feel free to explore the projects and get in touch if you have any questions or if you're interested in collaborating. I am excited about the future and the endless possibilities that lie ahead.
 
 Thank you for visiting my portfolio!
-
+1
 Best regards,
 [Sabit]
 

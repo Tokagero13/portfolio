@@ -19,13 +19,16 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 # from django.views.generic import RedirectView
-from projects.views import index, auth
+from projects.views import index, auth, AuthView, logout_user
 from cv.views import contact_us
+from django.views.decorators.cache import cache_page
 
 
 urlpatterns = [
-    path('', index, name='home'),
-    path('auth', auth, name='auth'),
+    path('', cache_page(60)(index), name='home'),
+    path("__debug__/", include("debug_toolbar.urls")),
+    path('auth', AuthView.as_view(), name='auth'),
+    path('logout', logout_user, name='logout'),
     path('admin/', admin.site.urls, name='admin'),
     path('projects/', include('projects.urls')),
     path('cv/', include('cv.urls'), name='cv'),  # Include the CV app URLs
