@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CV, PersonalInfo, Education, Experience, Skill, CVProject, Messages
+from .models import CV, ContactUs, PersonalInfo, Education, Experience, Skill, CVProject
 
 class EducationInline(admin.TabularInline):
     model = Education
@@ -20,12 +20,13 @@ class CVProjectInline(admin.TabularInline):
 class CVAdmin(admin.ModelAdmin):
     inlines = [EducationInline, ExperienceInline, SkillInline, CVProjectInline]
 
-class MessagesAdmin(admin.ModelAdmin):
-    model = Messages
-    verbose_name = 'Messages from Contact us form'
-    verbose_name_plural = 'Messages from Contact us form'
-    list_display = ('user', 'contact_us_msg', 'time_created')
-    search_fields = ('user', 'time_created')
+class ContactUsAdmin(admin.ModelAdmin):
+    model = ContactUs
+    verbose_name = 'Contact Us'
+    verbose_name_plural = 'Contact Us'
+    readonly_fields = ['full_name', 'email', 'phone', 'methods', 'message', 'time_created']
+    list_display = ('full_name', 'phone', 'methods', 'time_created')
+    search_fields = ('full_name', 'email', 'phone', 'methods', 'time_created')
 
 class PersonalInfoAdmin(admin.ModelAdmin):
     model = PersonalInfo
@@ -41,4 +42,4 @@ class PersonalInfoAdmin(admin.ModelAdmin):
 
 admin.site.register(PersonalInfo, PersonalInfoAdmin)
 admin.site.register(CV, CVAdmin)
-admin.site.register(Messages, MessagesAdmin)
+admin.site.register(ContactUs, ContactUsAdmin)

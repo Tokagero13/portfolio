@@ -13,15 +13,17 @@
 <body>
 {% block header %}
     <header>
-        {% cache 60 header %}
-
         <nav class="uk-navbar-container">
             <div class="uk-container">
                 <div uk-navbar>
         
                     <div class="uk-navbar-left">
-                        <a class="uk-navbar-item uk-logo" href="{% url 'home' %}" aria-label="Back to Home">
-                            <img src="{% get_media_prefix %}images/logo.png" alt="Logo" aria-label="Back to Home" style="height: 80px;">
+                        <a class="uk-navbar-item uk-logo uk-hidden@m" href="{% url 'home' %}" aria-label="Back to Home">
+                            <img src="{% static 'projects/images/logo.png' %}" alt="Logo" aria-label="Back to Home" style="height: 30px;">
+                        </a>
+                        
+                        <a class="uk-navbar-item uk-logo uk-visible@m" href="{% url 'home' %}" aria-label="Back to Home">
+                            <img src="{% static 'projects/images/logo.png' %}" alt="Logo" aria-label="Back to Home" style="height: 80px;">
                         </a>
                         <ul class="uk-navbar-nav">
                             <li class="{% if selected %}uk-active{% endif %}">
@@ -45,8 +47,6 @@
                             </li>
                         </ul>
                     </div>
-                    {% endcache %}x
-
                     <div class="uk-navbar-right">
                         <ul class="uk-navbar-nav">
                             {% if request.user.is_authenticated  %}

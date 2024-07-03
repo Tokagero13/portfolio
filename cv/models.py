@@ -1,16 +1,13 @@
-import re
 from django.db import models
-from django.core.validators import RegexValidator
-from django.forms import ValidationError
+from cv.validators import *
 
-def validate_phone_number(value):
-    if not value.isdigit():
-        raise ValidationError('Phone number must contain only numeric digits.')
-
-def validate_name_format(value):
-    pattern = r'^[A-Za-z\s]*$'
-    if not re.match(pattern, value):
-        raise ValidationError('Name must contain only letters and spaces.')
+METHODS = [
+    ('whatsapp', 'WhatsApp'),
+    ('telegram', 'Telegram'),
+    ('email', 'Email'),
+    ('phone_call', 'Phone call'),
+    ('any', 'Any'),
+]
 
 class PersonalInfo(models.Model):
     first_name = models.CharField(max_length=50, verbose_name="First name", validators=[validate_name_format])
@@ -21,14 +18,23 @@ class PersonalInfo(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
-
-class Messages(models.Model):
-    user = models.ForeignKey('PersonalInfo', related_name='messages', on_delete=models.CASCADE, verbose_name='messages')
-    contact_us_msg = models.TextField(max_length=250, verbose_name='Message')
-    time_created = models.DateTimeField(auto_now_add=True, verbose_name='Time created')
     
-    def __str__(self):
-        return f"{self.time_created} message from {self.user.first_name}: \n{self.contact_us_msg}"
+    class Meta:
+        verbose_name_plural = 'Personal info'
+
+class ContactUs(models.Model):
+    full_name = models.CharField(max_length=35, verbose_name="Full name", blank=False, validators=[validate_name_format])
+    email = models.EmailField(max_length=25, null=True, blank=True, verbose_name="Email Address")
+    phone = models.CharField(max_length=11, blank=False, validators=[validate_phone_number])
+    methods = models.CharField(max_length=20, choices=METHODS, default='any', verbose_name="Preferred Contact Method")
+    message = models.TextField(max_length=250, null=True, blank=True, verbose_name="Message")
+    time_created = models.DateTimeField(auto_now_add=True, verbose_name='Time created')
+
+    def __str__(self) -> str:
+        return f"Message from {self.full_name}"
+
+    class Meta:
+        verbose_name_plural = "Contact Us"
 
 class Education(models.Model):
     cv = models.ForeignKey('CV', related_name='education', on_delete=models.CASCADE)
@@ -77,3 +83,6 @@ class CV(models.Model):
 
     def __str__(self):
         return f"CV of {self.personal_info.first_name} {self.personal_info.last_name}"
+    
+    class Meta:
+        verbose_name_plural = 'CV'

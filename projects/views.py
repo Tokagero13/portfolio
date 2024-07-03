@@ -10,7 +10,6 @@ from django.contrib.auth import login, logout
 from projects.forms import RegisterUserForm
 from .models import *
 
-
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView
 from django.views.generic.list import ListView
@@ -22,10 +21,10 @@ class AuthView(View):
     template_name = 'projects/auth.html'
 
     def get(self, request, *args, **kwargs):
-        context = {
-            'register_form': RegisterUserForm(),
-            'login_form': AuthenticationForm(),
-        }
+        register_form = RegisterUserForm()
+        login_form = AuthenticationForm()
+        context['register_form'] = register_form
+        context['login_form'] = login_form
         return render(request, self.template_name, context)
 
     def post(self, request, *args, **kwargs):
@@ -47,39 +46,14 @@ class AuthView(View):
             register_form = RegisterUserForm()
             login_form = AuthenticationForm()
         
-        context = {
-            'register_form': register_form,
-            'login_form': login_form,
-        }
+        context['register_form'] = register_form
+        context['login_form'] = login_form
         return render(request, self.template_name, context)
 
 def logout_user(request):
     logout(request)
     return redirect('auth')
 
-# class RegisterUser(CreateView):
-#     form_class = RegisterUserForm
-#     template_name = 'projects/auth.html'
-#     # success_url = reverse_lazy('auth')
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         return context
-    
-#     def get_success_url(self):
-#         return reverse_lazy('home')
-    
-# class LoginUser(LoginView):
-#     form_class = AuthenticationForm
-#     template_name = 'projects/login.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         return context
-    
-
-
-# Create your views here.
 def index(request):
     return render(request, 'projects/index.html', context = context)
 
@@ -111,7 +85,3 @@ class ProjectDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['project_img'] = self.object.images.all()
         return context
-    
-    # def get_queryset(self):
-    #     return projects.objects.select_related('project')
-    

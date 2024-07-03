@@ -4,57 +4,54 @@
 {% block title %}Contact Us{% endblock %}
 {% block main %}
 <main class="uk-container uk-margin-top uk-margin-bottom uk-flex uk-flex-center">
-    <form action="{% url 'contact_us' %}" method="post" class="uk-form-stacked">
-        {% if form.non_field_errors %}
-            <div class="uk-alert uk-alert-danger uk-margin-bottom" uk-alert>
-                {{ form.non_field_errors }}
-            </div>
-        {% endif %}
-        <div class="uk-child-width-1-2@m" uk-grid>
-            <div>
-                {% csrf_token %}
-                {% for field in form %}
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        <div class="uk-form-controls">
-                            {{ field }}
-                            <div class="form-error uk-text-danger">
-                                {{ field.errors }}
+    <div class="uk-width-1-2@s">
+        <h2 class="uk-heading-line uk-text-center"><span>Contact us</span></h2>
+        <form action="{% url 'contact_us' %}" method="post" class="uk-form-stacked">
+            {% csrf_token %}
+            
+            {% if form.non_field_errors %}
+                <div class="uk-alert uk-alert-danger uk-margin-bottom" uk-alert>
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+            
+            <div class="uk-child-width-1-2@m" uk-grid>
+                <div>
+                    {% for field in form %}
+                        {% if forloop.counter0 < 3 %}
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                <div class="uk-form-controls">
+                                    {{ field }}
+                                    <div class="form-error uk-text-danger">
+                                        {{ field.errors }}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                {% endfor %}
-
-                {% comment %}
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="{{ extra_form.id_for_label }}">{{ extra_form.label }}</label>
-                    <div class="uk-form-controls">
-                        {{ extra_form.messages }}
-                        <div class="form-error uk-text-danger">
-                            {{ extra_form.errors }}
-                        </div>
-                    </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-                {% endcomment %}
-            </div>
-            <div>
-                {% for field in extra_form %}
-                <div class="uk-margin">
-                    <label class="uk-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
-                    <div class="uk-form-controls">
-                        {{ field }}
-                        <div class="form-error uk-text-danger">
-                            {{ field.errors }}
-                        </div>
-                    </div>
+                <div>
+                    {% for field in form %}
+                        {% if forloop.counter0 >= 3 %}
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                                <div class="uk-form-controls">
+                                    {{ field }}
+                                    <div class="form-error uk-text-danger">
+                                        {{ field.errors }}
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
                 </div>
-            {% endfor %}
             </div>
-        </div>
-        <div class="uk-margin">
-            <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" type="submit">Send</button>
-        </div>
-    </form>
-
+            
+            <div class="uk-margin">
+                <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" type="submit">Send</button>
+            </div>
+        </form>
+    </div>
 </main>
 {% endblock %}

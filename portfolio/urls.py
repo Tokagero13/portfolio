@@ -25,8 +25,9 @@ from django.views.decorators.cache import cache_page
 
 
 urlpatterns = [
-    path('', index, name='home'),
+    path('', index, name='home'), # cache_page(60 *15)(index) \\ cache for 15 min
     path("__debug__/", include("debug_toolbar.urls")),
+    path('captcha/', include('captcha.urls')),
     path('auth', AuthView.as_view(), name='auth'),
     path('logout', logout_user, name='logout'),
     path('admin/', admin.site.urls, name='admin'),

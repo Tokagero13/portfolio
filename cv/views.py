@@ -1,48 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import *
-from .forms import CVForm, ContactUsForm, PersonalInfoForm, Contact_us_extraFormSet, ContactUs_extraForm, MessagesForm
-from projects.views import Project
-
-#Main variables
-menu = [
-    {'title': 'home', 'url_name': 'home'},
-    {'title': 'profile', 'url_name': 'cv'},
-    {'title': 'projects', 'url_name': 'projects'},
-    {'title': 'login', 'url_name': 'login'}
-    ]
-
-projects = Project.objects.order_by('title').all()
-# project_img = ProjectImage.objects.all()
-
-# Initialize cv_project dictionary
-cv_project = {
-    'Personal Info': PersonalInfo.objects.all(),
-    'Experience': Experience.objects.all(),
-    'Education': Education.objects.all(),
-    'Projects': CVProject.objects.all(),
-    'Skills': Skill.objects.all(),
-}
-
-# Define your list of models
-models_list = [CVProject, Skill, Experience, Education, PersonalInfo]
-
-# Initialize empty list to collect all field names
-experience_fields = []
-
-# Iterate over each model to fetch field names
-for model in models_list:
-    model_fields = [field.name for field in model._meta.get_fields() if field.name != 'id']
-    experience_fields.extend(model_fields)
-
-# Remove duplicates and maintain order (if necessary)
-experience_fields = list(dict.fromkeys(experience_fields))
-
-context = {
-    'cv_project': cv_project,
-    'experience_fields': experience_fields,
-    'projects': projects,
-    'menu': menu
-}
+from .forms import ContactUsForm
+from projects.utils import *
 
 # Create your views here.
 def index(request):
@@ -51,24 +10,20 @@ def index(request):
 def contact_us(request):
     if request.method == 'POST':
         form = ContactUsForm(request.POST)
-        extra_form = ContactUs_extraForm(request.POST)
-        # extra_form = MessagesForm(request.POST)
-        if form.is_valid() and extra_form.is_valid():
-            personal_info = form.save()
-            message = Messages(
-                contact_us_msg=extra_form.cleaned_data['message'],
-                user=personal_info
-            )
-            message.save()
+        if form.is_valid():
+            form.save()
             return redirect('home')
     else:
         form = ContactUsForm()
-        extra_form = ContactUs_extraForm()
-        # extra_form = MessagesForm(request.POST)
 
     context['form'] = form
-    context['extra_form'] = extra_form
     return render(request, 'cv/contact_us.html', context=context)
+
+def cv_detail(request):
+    return render(request, 'cv/cv_django.html', context=context)
+
+def cv_html(request):
+    return render(request, 'cv/cv_html.html', context=context)
 
 # def create_cv(request):
 #     if request.method == "POST":
@@ -105,9 +60,3 @@ def contact_us(request):
 #         'skill_formset': skill_formset,
 #         'cv_project_formset': cv_project_formset,
 #     })
-
-def cv_detail(request):
-    return render(request, 'cv/cv_django.html', context=context)
-
-def cv_html(request):
-    return render(request, 'cv/cv_html.html', context=context)
