@@ -34,6 +34,6 @@ urlpatterns = [
     path('projects/', include('projects.urls')),
     path('cv/', include('cv.urls'), name='cv'),  # Include the CV app URLs
     path('contact_us', contact_us, name="contact_us")
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

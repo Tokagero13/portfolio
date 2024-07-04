@@ -4,29 +4,29 @@
 {% block main %}
     <main class="uk-container uk-margin-small-top uk-margin-small-bottom">
         
-        <div uk-slideshow="animation: fade; ratio: 7:3; autoplay: true; autoplay-interval: 2000; pause-on-hover: true" uk-slider="finite: true">
+        <div uk-slideshow="animation: fade; ratio: 7:3; autoplay: true; autoplay-interval: 3000; pause-on-hover: true" uk-slider="finite: true">
 
             <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" >
         
                 <div class="uk-slideshow-items">
                     <div>
                         <div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left">
-                            <img src="{% static 'images/bk_img1.jpg' %}" alt="" uk-cover>
+                            <img src="{% static 'projects/images/bk_img1.jpg' %}" alt="" uk-cover>
                         </div>
                         <div class="uk-overlay uk-overlay-primary uk-position-bottom uk-text-center">
-                            <a class="uk-button uk-button-default uk-margin-small" href="{% url 'home' %}"><h3 class="uk-margin-remove">Curriculum Vitae</h3></a>
-                            <p class="uk-margin-remove">I am eager to showcase my qualifications and experiences. Please find my CV for your review</p>
+                            <h3 class="uk-margin">Welcome to my page</h3>
+                            <p class="uk-margin-remove">Feel free to explore and test my Django-built website. I am glad to introduce you to my experience in programming</p>
                         </div>
 
                     </div>
                     <div>
                         <div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-right">
-                            <img src="{% static 'images/bk_img2.jpg' %}" alt="" uk-cover>
+                            <img src="{% static 'projects/images/bk_img2.jpg' %}" alt="" uk-cover>
                         </div>
                     </div>
                     <div>
                         <div class="uk-position-cover uk-animation-kenburns uk-transform-origin-center-left">
-                            <img src="{% static 'images/bk_img3.jpg' %}" alt="" uk-cover>
+                            <img src="{% static 'projects/images/bk_img3.jpg' %}" alt="" uk-cover>
                         </div>
                     </div>
                 </div>

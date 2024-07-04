@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'captcha',
-    "debug_toolbar",
+    'debug_toolbar',
     'projects.apps.ProjectsConfig', #my projects app
     'cv.apps.CvConfig', #my CV app
 ]
