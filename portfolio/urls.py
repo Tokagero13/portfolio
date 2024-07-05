@@ -1,31 +1,23 @@
-"""
-URL configuration for portfolio project.
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/5.0/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-# from django.views.generic import RedirectView
-from projects.views import index, auth, AuthView, logout_user
+from projects.views import index, AuthView, logout_user, UserViewSet
 from cv.views import contact_us
 from django.views.decorators.cache import cache_page
 
+from rest_framework import routers
+from rest_framework.authtoken import views
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'users', UserViewSet, basename='user')
 
 urlpatterns = [
     path('', index, name='home'), # cache_page(60 *15)(index) \\ cache for 15 min
+    path('api', include(router.urls)),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api-token-auth/', views.obtain_auth_token),
     path("__debug__/", include("debug_toolbar.urls")),
     path('captcha/', include('captcha.urls')),
     path('auth', AuthView.as_view(), name='auth'),
@@ -35,5 +27,7 @@ urlpatterns = [
     path('cv/', include('cv.urls'), name='cv'),  # Include the CV app URLs
     path('contact_us', contact_us, name="contact_us")
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += router.urls
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

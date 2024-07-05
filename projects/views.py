@@ -1,6 +1,5 @@
 from winreg import CreateKey
 from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView
 from django.views import View
@@ -11,8 +10,6 @@ from projects.forms import RegisterUserForm
 from .models import *
 
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView
-from django.views.generic.list import ListView
 
 from django.core.paginator import Paginator
 from projects.utils import *
@@ -85,3 +82,22 @@ class ProjectDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['project_img'] = self.object.images.all()
         return context
+
+
+#___REST API___
+from rest_framework import viewsets
+from .serializer import UserSerializer
+from django.contrib.auth.models import User
+from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from rest_framework import viewsets
+
+
+# ViewSets define the view behavior.
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    A viewset for viewing and editing user instances.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]

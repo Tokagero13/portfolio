@@ -1,8 +1,6 @@
 from datetime import datetime
 import os
-
 from django.db import models
-
 from django.urls import reverse
 
 def project_image_upload_to(instance, filename):
@@ -42,3 +40,9 @@ class ProjectImage(models.Model):
     class Meta: 
         verbose_name = 'Images (for Project)'
         verbose_name_plural = 'Images (for Project)'
+
+
+
+
+
+
