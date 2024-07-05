@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/css/uikit.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.21.5/dist/js/uikit-icons.min.js"></script>
+    <link rel="icon" href="{% static 'projects/images/thumb.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'projects/images/thumb.png' %}" type="image/x-icon">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -105,6 +107,9 @@
                 </li>
                 <li>
                     <a href="{% url 'contact_us' %}" class="uk-button uk-button-deafult">Contact us</a>
+                </li>
+                <li>
+                    <a href="{% url 'technologies' %}" class="uk-button uk-button-deafult">Technologies</a>
                 </li>
         </div>
     </div>

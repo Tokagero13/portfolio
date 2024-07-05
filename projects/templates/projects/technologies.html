@@ -1,0 +1,101 @@
+{% extends "projects/layout.html" %}
+{% load static %}
+{% block title %}Technologies{% endblock %} 
+{% block main %}
+<main class="uk-container uk-margin-small-top uk-margin-small-bottom">
+    <h1>Technologies</h1>
+    <div uk-slideshow="animation: fade; ratio: 7:3; autoplay: true; autoplay-interval: 3000; pause-on-hover: true" uk-slider="finite: true">
+        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+            <ul class="uk-slideshow-items">
+                <li>
+                    <div class="uk-position-cover uk-animation-kenburns uk-transform-origin-bottom-right">
+                        <img src="{% static 'cv/images/django_port.jpg' %}" alt="Slide Image" uk-cover>
+                    </div>
+                    <div class="uk-overlay uk-overlay-primary uk-position-right uk-text-left uk-transition-slide-right uk-width-large">
+                        <h3 class="uk-margin">Learned Technologies</h3>
+                        <div class="uk-flex">
+                            <ul>
+                                <li>Django ORM</li>
+                                <li>MTV Architecture</li>
+                                <li>Django Admin</li>
+                                <li>Django Forms</li>
+                                <li>Django REST Framework (DRF)</li>
+                                <li>Django Templating System</li>
+                                <li>URL Routing</li>
+                                <li>Middleware</li>
+                                <li>Authentication and Authorization</li>
+                                <li>Static Files and Media Handling</li>
+                            </ul>
+                            <ul>
+                                <li>Django Signals</li>
+                                <li>Django Management Commands</li>
+                                <li>Database Migrations</li>
+                                <li>Third-Party Packages and Django Packages</li>
+                                <li>Django Settings</li>
+                                <li>Testing Framework</li>
+                                <li>Internationalization and Localization (i18n and l10n)</li>
+                                <li>Security Features</li>
+                                <li>Caching</li>
+                                <li>Django Channels</li>
+                                <li>Deployment</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-position-cover uk-animation-kenburns uk-transform-origin-bottom-right">
+                        <img src="{% static 'cv/images/django_port.jpg' %}" alt="Slide Image" uk-cover>
+                    </div>
+                    <div class="uk-overlay uk-overlay-primary uk-position-right uk-text-left uk-transition-slide-right uk-width-large">
+                        <h3 class="uk-margin">Learned Technologies</h3>
+                        <div class="uk-flex">
+                            <ul>
+                                <li>Django ORM</li>
+                                <li>MTV Architecture</li>
+                                <li>Django Admin</li>
+                                <li>Django Forms</li>
+                                <li>Django REST Framework (DRF)</li>
+                                <li>Django Templating System</li>
+                                <li>URL Routing</li>
+                                <li>Middleware</li>
+                                <li>Authentication and Authorization</li>
+                                <li>Static Files and Media Handling</li>
+                            </ul>
+                            <ul>
+                                <li>Django Signals</li>
+                                <li>Django Management Commands</li>
+                                <li>Database Migrations</li>
+                                <li>Third-Party Packages and Django Packages</li>
+                                <li>Django Settings</li>
+                                <li>Testing Framework</li>
+                                <li>Internationalization and Localization (i18n and l10n)</li>
+                                <li>Security Features</li>
+                                <li>Caching</li>
+                                <li>Django Channels</li>
+                                <li>Deployment</li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                </li>
+            </ul>
+            
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+        </div>
+        
+        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+    </div>
+    <hr class="uk-divider-icon uk-margin-medium">
+    <div>
+        <h1 class="uk-margin">Backend Development Roadmap</h1>
+        <p>Here you can find the roadmap for the backend development that I follow.</p>
+        <div class="uk-inline uk-dark">
+            <img src="{% static 'cv/images/backend_roadmap.jpg' %}" alt="">
+            <a class="uk-position-absolute uk-transform-center" style="right: 32%; top: 3.55%" href="https://roadmap.sh/backend" uk-marker uk-tooltip="title: Visit Backend Roadmap; pos: top-right"></a>
+        </div>
+    </div>
+    
+</main>
+{% endblock main %}

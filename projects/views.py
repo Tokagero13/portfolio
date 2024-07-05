@@ -47,6 +47,9 @@ class AuthView(View):
         context['login_form'] = login_form
         return render(request, self.template_name, context)
 
+def technologies(request):
+    return render(request, 'projects/technologies.html', context=context)
+
 def logout_user(request):
     logout(request)
     return redirect('auth')
