@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-from projects.views import index, AuthView, logout_user, UserViewSet
+from projects.views import index, AuthView, logout_user, UserViewSet, technologies
 from cv.views import contact_us
 from django.views.decorators.cache import cache_page
 
@@ -25,7 +25,8 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('projects/', include('projects.urls')),
     path('cv/', include('cv.urls'), name='cv'),  # Include the CV app URLs
-    path('contact_us', contact_us, name="contact_us")
+    path('contact_us', contact_us, name="contact_us"),
+    path('technologies', technologies, name="technologies")
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 urlpatterns += router.urls

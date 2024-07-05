@@ -70,11 +70,10 @@
         </li>
     </ul> 
 </main> {% endcomment %}
-<main class="uk-container uk-margin-top uk-margin-bottom">
-    <div class="uk-grid-column-small uk-grid-row-large uk-child-width-1-2@s uk-flex-center" uk-grid>
+<main class="uk-container uk-margin-small-top uk-margin-small-bottom">
+
         <!-- Login Column -->
-        <div>
-            <div class="uk-width-1-1" style="height: 300px auto">
+        <div class="uk-container uk-width-1-2" style="height: 300px auto">
                 <h2 class="uk-heading-line uk-text-center"><span>Login</span></h2>
                 <form method="post" class="uk-form-stacked">
                     {% csrf_token %}
@@ -101,40 +100,38 @@
                         <button type="submit" class="uk-button uk-button-primary uk-width-1-1" name="login">Login</button>
                     </div>
                 </form>
-            </div>
+        </div>
+        <!-- Register Column -->
+
+        <div class="uk-container uk-width-1-2">
+            <h2 class="uk-heading-line uk-text-center"><span>Register</span></h2>
+            <form method="post" class="uk-form-stacked">
+                {% csrf_token %}
+                
+                {% if register_form.non_field_errors %}
+                <div class="uk-alert uk-alert-danger" uk-alert>
+                    {{ register_form.non_field_errors }}
+                </div>
+                {% endif %}
+                
+                {% for field in register_form %}
+                <div class="uk-margin uk-flex uk-flex-left">
+                    <label class="uk-form-label" for="{{ field.id_for_label }}">{{ field.label }}:</label>
+                    <div class="uk-form-controls uk-margin-left">
+                        {{ field }}
+                    </div>
+                    <div class="uk-text-danger">
+                        {{ field.errors }}
+                    </div>
+                </div>
+                {% endfor %}
+                
+                <div class="uk-margin">
+                    <button type="submit" class="uk-button uk-button-primary uk-width-1-1" name="register">Register</button>
+                </div>
+            </form>
         </div>
 
-        <!-- Register Column -->
-        <div>
-            <div class="uk-width-1-1">
-                <h2 class="uk-heading-line uk-text-center"><span>Register</span></h2>
-                <form method="post" class="uk-form-stacked">
-                    {% csrf_token %}
-                    
-                    {% if register_form.non_field_errors %}
-                    <div class="uk-alert uk-alert-danger" uk-alert>
-                        {{ register_form.non_field_errors }}
-                    </div>
-                    {% endif %}
-                    
-                    {% for field in register_form %}
-                    <div class="uk-margin uk-flex uk-flex-left">
-                        <label class="uk-form-label" for="{{ field.id_for_label }}">{{ field.label }}:</label>
-                        <div class="uk-form-controls uk-margin-left">
-                            {{ field }}
-                        </div>
-                        <div class="uk-text-danger">
-                            {{ field.errors }}
-                        </div>
-                    </div>
-                    {% endfor %}
-                    
-                    <div class="uk-margin">
-                        <button type="submit" class="uk-button uk-button-primary uk-width-1-1" name="register">Register</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
 </main>
 {% endblock main %}

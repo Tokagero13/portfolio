@@ -1,0 +1,209 @@
+{% extends "projects/layout.html" %}
+{% load static %}
+{% block title %}Technologies{% endblock %} 
+{% block main %}
+<main class="uk-container uk-margin-small-top uk-margin-small-bottom">
+    <h1>Technologies</h1>
+    <div uk-slideshow="animation: fade; ratio: 7:3; autoplay: true; autoplay-interval: 6000; pause-on-hover: true" uk-slider="finite: true">
+        <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+            <ul class="uk-slideshow-items">
+                <li>
+                    <div class="uk-position-cover uk-animation-kenburns uk-transform-origin-bottom-right">
+                        <img src="{% static 'cv/images/django_port.jpg' %}" alt="Slide Image" uk-cover>
+                    </div>
+                    <div class="uk-overlay uk-overlay-primary uk-position-right uk-text-left uk-transition-slide-right" style="font-size: 12px;">
+                        <h3 class="uk-margin">Django Framework</h3>
+                        <div class="uk-flex uk-grid-small" uk-grid>
+                            <div class="uk-width-1-2">
+                                <ul>
+                                    <li>Django ORM</li>
+                                    <li>MTV Architecture</li>
+                                    <li>Django Admin</li>
+                                    <li>Django Forms</li>
+                                    <li>Django REST Framework (DRF)</li>
+                                    <li>Django Templating System</li>
+                                    <li>URL Routing</li>
+                                    <li>Middleware</li>
+                                    <li>Authentication and Authorization</li>
+                                    <li>Static Files and Media Handling</li>
+                                </ul>
+                            </div>
+                            <div class="uk-width-1-2">
+                                <ul>
+                                    <li>Django Signals</li>
+                                    <li>Django Management Commands</li>
+                                    <li>Database Migrations</li>
+                                    <li>Third-Party Packages and Django Packages</li>
+                                    <li>Django Settings</li>
+                                    <li>Testing Framework</li>
+                                    <li>Internationalization and Localization (i18n and l10n)</li>
+                                    <li>Security Features</li>
+                                    <li>Caching</li>
+                                    <li>Django Channels</li>
+                                    <li>Deployment</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-position-cover uk-animation-kenburns uk-transform-origin-bottom-right">
+                        <img src="{% static 'cv/images/python.jpg' %}" alt="Slide Image" uk-cover>
+                    </div>
+                    <div class="uk-overlay uk-overlay-primary uk-position-right uk-text-left uk-transition-slide-right" style="font-size: 12px;">
+                        <h3 class="uk-margin">Python Language</h3>
+                        <div class="uk-flex uk-grid-small" uk-grid>
+                            <div class="uk-width-1-2">
+                                <ul>
+                                    <li>
+                                        Basics
+                                        <ul>
+                                            <li>Syntax</li>
+                                            <li>Data types</li>
+                                            <li>Variables</li>
+                                            <li>Operators</li>
+                                            <li>Control flow</li>
+                                            <li>Functions</li>
+                                            <li>Classes and objects</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Advanced Python
+                                        <ul>
+                                            <li>Generators</li>
+                                            <li>Decorators</li>
+                                            <li>Context managers</li>
+                                            <li>Descriptors</li>
+                                            <li>Magic methods</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Web Development
+                                        <ul>
+                                            <li>Web frameworks (e.g., Flask, Django)</li>
+                                            <li>ORMs (e.g., SQLAlchemy)</li>
+                                            <li>RESTful APIs</li>
+                                            <li>Web scraping</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="uk-width-1-2">
+                                <ul>
+                                    <li>
+                                        Data Science and Machine Learning
+                                        <ul>
+                                            <li>NumPy and pandas</li>
+                                            <li>Matplotlib and seaborn</li>
+                                            <li>Scikit-learn</li>
+                                            <li>TensorFlow or PyTorch</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Testing and Debugging
+                                        <ul>
+                                            <li>Unit testing</li>
+                                            <li>Integration testing</li>
+                                            <li>Debugging techniques</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Deployment
+                                        <ul>
+                                            <li>Virtual environments</li>
+                                            <li>Containerization (e.g., Docker)</li>
+                                            <li>Cloud platforms (e.g., AWS, GCP)</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="uk-position-cover uk-animation-kenburns uk-transform-origin-bottom-right">
+                        <img src="{% static 'cv/images/Github.png' %}" alt="Slide Image" uk-cover>
+                    </div>
+                    <div class="uk-overlay uk-overlay-primary uk-position-right uk-text-left uk-transition-slide-right" style="font-size: 12px;">
+                        <h3 class="uk-margin">Github Interface</h3>
+                        <div class="uk-flex uk-grid-small" uk-grid>
+                            <div class="uk-width-1-2">
+                                <ul>
+                                    <li>
+                                        Git Basics:
+                                        <ul>
+                                            <li>Understand version control</li>
+                                            <li>Repositories</li>
+                                            <li>Commits</li>
+                                            <li>Branches</li>
+                                            <li>Merges</li>
+                                            <li>Pull requests</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        GitHub Interface:
+                                        <ul>
+                                            <li>Learn to navigate repositories</li>
+                                            <li>Issues</li>
+                                            <li>Pull requests</li>
+                                            <li>Settings</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Collaboration:
+                                        <ul>
+                                            <li>Know how to fork repositories</li>
+                                            <li>Create pull requests</li>
+                                            <li>Manage issues</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="uk-width-1-2">
+                                <ul>
+                                    <li>
+                                        Advanced Git:
+                                        <ul>
+                                            <li>Rebase</li>
+                                            <li>Stash</li>
+                                            <li>Resolve conflicts</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        CI/CD:
+                                        <ul>
+                                            <li>Set up GitHub Actions for continuous integration and deployment</li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        Best Practices:
+                                        <ul>
+                                            <li>Follow conventions for commit messages</li>
+                                            <li>Branching strategies</li>
+                                            <li>Code reviews</li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+            <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+        </div>
+        
+        <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
+    </div>
+    <hr class="uk-divider-icon uk-margin-medium">
+    <div>
+        <h1 class="uk-margin">Backend Development Roadmap</h1>
+        <p>Here you can find the roadmap for the backend development that I follow.</p>
+        <div class="uk-inline uk-dark">
+            <img src="{% static 'cv/images/backend_roadmap.jpg' %}" alt="">
+            <a class="uk-position-absolute uk-transform-center" style="right: 32%; top: 3.55%" href="https://roadmap.sh/backend" uk-marker uk-tooltip="title: Visit Backend Roadmap; pos: top-right" target="_blank"></a>
+        </div>
+    </div>
+    
+</main>
+{% endblock main %}
