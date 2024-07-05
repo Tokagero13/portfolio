@@ -52,7 +52,7 @@ def logout_user(request):
     return redirect('auth')
 
 def index(request):
-    return render(request, 'projects/index.html', context = context)
+    return render(request, 'projects/index.html', context=context)
 
 def auth(request):
     return render(request, 'projects/auth.html', context=context)
@@ -95,9 +95,8 @@ from rest_framework import viewsets
 
 # ViewSets define the view behavior.
 class UserViewSet(viewsets.ModelViewSet):
-    """
-    A viewset for viewing and editing user instances.
-    """
+    #A viewset for viewing and editing user instances.
+
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [AllowAny]
