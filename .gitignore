@@ -1,0 +1,17 @@
+# Ignore virtual environments
+portfolio/.env
+cache/*
+portfolio/cache/*
+
+# Ignore Django cache and cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Ignore cache directories
+cache/
+.djcache/
+
+
