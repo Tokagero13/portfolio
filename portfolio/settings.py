@@ -12,18 +12,31 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from google.cloud import secretmanager
+from dotenv import load_dotenv
+
+load_dotenv()
+django_secret = os.getenv('DJANGO_SECRET') 
+
+# def get_secret(secret_id):
+#     client = secretmanager.SecretManagerServiceClient()
+#     project_id = os.getenv('GOOGLE_CLOUD_PROJECT')
+#     name = f"projects/{project_id}/secrets/{secret_id}/versions/latest"
+#     response = client.access_secret_version(request={"name": name})
+#     return response.payload.data.decode('UTF-8')
+
+# SECRET_KEY = get_secret('django-secret-key')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=i2rb@gmp1b(s^9x)@^q08ovr!*z6c_^@*waj(3fz1d!1ha28s'
+SECRET_KEY = django_secret
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
