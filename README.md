@@ -1,163 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sabit Shangerey - Backend Developer</title>
-    <!-- Bootstrap CDN for styling -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            color: #343a40;
-        }
-        .container {
-            max-width: 800px;
-            margin-top: 20px;
-        }
-        .section-title {
-            border-bottom: 2px solid #6c757d;
-            padding-bottom: 5px;
-            margin-bottom: 15px;
-        }
-        .contact-info p {
-            margin: 0;
-        }
-        .skill-item {
-            margin-bottom: 10px;
-        }
-    </style>
-    <script>
-        function toggleLanguage(lang) {
-            const enElements = document.querySelectorAll('.en');
-            const ruElements = document.querySelectorAll('.ru');
+# Sabit Shangerey - Backend Developer
 
-            if (lang === 'en') {
-                enElements.forEach(el => el.style.display = 'block');
-                ruElements.forEach(el => el.style.display = 'none');
-            } else {
-                enElements.forEach(el => el.style.display = 'none');
-                ruElements.forEach(el => el.style.display = 'block');
-            }
-        }
-    </script>
-</head>
-<body>
+## Overview
+This repository contains the personal resume of Sabit Shangerey, a passionate Backend Developer. The resume showcases skills, experience, and projects, highlighting expertise in backend technologies and API development.
 
-<div class="container bg-white p-4 shadow-sm">
-    <!-- Language Switcher -->
-    <div class="text-right mb-4">
-        <button class="btn btn-primary" onclick="toggleLanguage('en')">English</button>
-        <button class="btn btn-secondary" onclick="toggleLanguage('ru')">Русский</button>
-    </div>
+## Table of Contents
+- [Profile](#profile)
+- [Technical Skills](#technical-skills)
+- [Experience](#experience)
+- [Projects](#projects)
+- [Education](#education)
+- [Contact](#contact)
 
-    <!-- Header Section -->
-    <header class="text-center mb-4">
-        <h1 class="display-4"><span class="en">Sabit Shangerey</span><span class="ru" style="display:none;">Сабит Шангерей</span></h1>
-        <p class="lead"><span class="en">Backend Developer</span><span class="ru" style="display:none;">Бэкенд Разработчик</span></p>
-        <div class="contact-info">
-            <p><strong><span class="en">Phone:</span><span class="ru" style="display:none;">Телефон:</span></strong> +7 708 641 53 91 | <strong><span class="en">Email:</span><span class="ru" style="display:none;">Электронная почта:</span></strong> <a href="mailto:sabitshangery@gmail.com">sabitshangery@gmail.com</a></p>
-            <p><strong><span class="en">GitHub:</span><span class="ru" style="display:none;">GitHub:</span></strong> <a href="https://github.com/Tokagero13" target="_blank">github.com/Tokagero13</a></p>
-        </div>
-    </header>
+## Profile
+Aspiring Backend Developer with experience in system design, data management, and API development. Proficient in Python, SQL, and backend frameworks. Passionate about efficient, scalable solutions and continuous improvement in IT.
 
-    <!-- Profile Section -->
-    <section>
-        <h2 class="section-title"><span class="en">Profile</span><span class="ru" style="display:none;">Профиль</span></h2>
-        <p>
-            <span class="en">Aspiring Backend Developer with experience in system design, data management, and API development. Proficient in Python, SQL, and backend frameworks. Passionate about efficient, scalable solutions and continuous improvement in IT.</span>
-            <span class="ru" style="display:none;">Стремящийся к развитию бэкенд-разработчик с опытом в проектировании систем, управлении данными и разработке API. Уверенные навыки в Python, SQL и бэкенд-фреймворках. Увлечен эффективными и масштабируемыми решениями, а также постоянным улучшением в ИТ.</span>
-        </p>
-    </section>
+## Technical Skills
+- **Programming Languages**: Python, SQL, HTML, CSS
+- **Frameworks**: Django, Flask
+- **Databases**: PostgreSQL, SQLAlchemy ORM
+- **Version Control**: Git
+- **DevOps**: Docker
+- **Web Scraping**: Beautiful Soup
+- **API Testing**: Postman, Fast API, Swagger (Open API)
+- **Operating Systems**: Ubuntu
+- **Container Deployment**: Deploying containers on Ubuntu server using Docker Compose
+- **Applications**: NextCloud, Pi-Hole, and self-hosted websites
 
-    <!-- Technical Skills Section -->
-    <section>
-        <h2 class="section-title"><span class="en">Technical Skills</span><span class="ru" style="display:none;">Технические навыки</span></h2>
-        <div class="row">
-            <div class="col-md-6 skill-item"><strong><span class="en">Programming Languages:</span><span class="ru" style="display:none;">Языки программирования:</span></strong> Python, SQL, HTML, CSS</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">Frameworks:</span><span class="ru" style="display:none;">Фреймворки:</span></strong> Django, Flask</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">Databases:</span><span class="ru" style="display:none;">Базы данных:</span></strong> PostgreSQL, SQLAlchemy ORM</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">Version Control:</span><span class="ru" style="display:none;">Контроль версий:</span></strong> Git</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">DevOps:</span><span class="ru" style="display:none;">DevOps:</span></strong> Docker</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">Web Scraping:</span><span class="ru" style="display:none;">Веб-скрейпинг:</span></strong> Beautiful Soup</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">API Testing:</span><span class="ru" style="display:none;">Тестирование API:</span></strong> Postman, Fast API, Swagger(Open API)</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">Operating Systems:</span><span class="ru" style="display:none;">Операционные системы:</span></strong> Ubuntu (installation)</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">Container Deployment:</span><span class="ru" style="display:none;">Развертывание контейнеров:</span></strong> Deploying containers on Ubuntu server using Docker Compose via terminal and PuTTY</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">Applications:</span><span class="ru" style="display:none;">Приложения:</span></strong> NextCloud, Pi-Hole, and self-hosted websites</div>
-        </div>
-    </section>
-    <section>
-        <h2 class="section-title"><span class="en">Theoretical Understanding of</span><span class="ru" style="display:none;">Теоретическое понимание</span></h2>
-        <div class="row">
-            <div class="col-md-6 skill-item"><strong><span class="en">API Authentication:</span><span class="ru" style="display:none;">Аутентификация API:</span></strong> JWT, OAuth, Basic, Token, Cookie-Based</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">Web Services:</span><span class="ru" style="display:none;">Веб-сервисы:</span></strong> REST (HATEOAS, RPC+HTTP), SOAP, gRPC, GraphQL</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">Web Security:</span><span class="ru" style="display:none;">Веб-безопасность:</span></strong> SHA, Scrypt</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">Object-Relational Mapping:</span><span class="ru" style="display:none;">Объектно-реляционное отображение:</span></strong> Django ORM</div>
-            <div class="col-md-6 skill-item"><strong><span class="en">OSI Model:</span><span class="ru" style="display:none;">Модель OSI:</span></strong> 7 Layers</div>
-        </div>
-    </section>
-    <!-- Experience Section -->
-    <section>
-        <h2 class="section-title"><span class="en">Experience</span><span class="ru" style="display:none;">Опыт</span></h2>
-        <div class="mb-3">
-            <h5>
-                <a data-toggle="collapse" href="#forzaDetails" role="button" aria-expanded="false" aria-controls="forzaDetails">
-                    <span class="en">Forza</span><span class="ru" style="display:none;">Forza</span>
-                </a>
-            </h5>
-            <p class="text-muted"><span class="en">May 2022 – May 2024</span><span class="ru" style="display:none;">Май 2022 – Май 2024</span></p>
-            <div class="collapse" id="forzaDetails">
-                <ul>
-                    <li><span class="en">Optimized inventory and order management using custom software solutions.</span><span class="ru" style="display:none;">Оптимизировал управление запасами и заказами с использованием индивидуальных программных решений.</span></li>
-                    <li><span class="en">Automated data management tasks with Python scripts to improve workflow efficiency.</span><span class="ru" style="display:none;">Автоматизировал задачи управления данными с помощью скриптов Python для повышения эффективности рабочего процесса.</span></li>
-                    <li><span class="en">Integrated APIs with warehouse management systems to enhance data flow and reliability.</span><span class="ru" style="display:none;">Интегрировал API с системами управления складами для улучшения потока данных и надежности.</span></li>
-                    <li><span class="en">Experience in inventory accounting using systems like 1C and Excel.</span><span class="ru" style="display:none;">Опыт ведения учета запасов с использованием систем, таких как 1С и Excel.</span></li>
-                    <li><span class="en">Developed HTML and JavaScript-based calculators and invoice creators.</span><span class="ru" style="display:none;">Разработал калькуляторы и создатели счетов на основе HTML и JavaScript.</span></li>
-                    <li><span class="en">Worked with APIs from platforms such as Ozon, Amazon, and Walmart.</span><span class="ru" style="display:none;">Работал с API платформ, таких как Ozon, Amazon и Walmart.</span></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <!-- Projects Section -->
-    <section>
-        <h2 class="section-title"><span class="en">Projects</span><span class="ru" style="display:none;">Проекты</span></h2>
-        <div class="mb-3">
-            <h5>
-                <a data-toggle="collapse" href="#openAiBotDetails" role="button" aria-expanded="false" aria-controls="openAiBotDetails">
-                    <span class="en">Open AI API + Telegram Bot</span><span class="ru" style="display:none;">Open AI API + Telegram Бот</span>
-                </a>
-            </h5>
-            <div class="collapse" id="openAiBotDetails">
-                <p><span class="en">Developed a Telegram bot that utilizes OpenAI's API to assist with frequently asked questions (FAQ) for customers. The bot is designed to streamline the ordering process by collecting personal data necessary to complete orders. Through user-friendly chat commands, customers can easily get answers to their inquiries and provide the required information, enhancing their overall experience and efficiency in order management.</span><span class="ru" style="display:none;">Разработал Telegram-бота, который использует API OpenAI для помощи с часто задаваемыми вопросами (FAQ) для клиентов. Бот предназначен для упрощения процесса заказа, собирая личные данные, необходимые для выполнения заказов. С помощью удобных команд чата клиенты могут легко получить ответы на свои запросы и предоставить необходимую информацию, что улучшает их общий опыт и эффективность в управлении заказами.</span></p>
-                <p><a href="https://github.com/Tokagero13/Open-AI-bot.git" target="_blank">Link to Git</a></p>
-            </div>
-        </div>
-        <div class="mb-3">
-            <h5>
-                <a data-toggle="collapse" href="#djangoPortfolioDetails" role="button" aria-expanded="false" aria-controls="djangoPortfolioDetails">
-                    <span class="en">Django Portfolio</span><span class="ru" style="display:none;">Портфолио на Django</span>
-                </a>
-            </h5>
-            <div class="collapse" id="djangoPortfolioDetails">
-                <p><span class="en">This project showcases my skills, experience, and projects in a visually appealing format. The site features a user-friendly interface and is built on a robust Django framework, allowing for easy navigation and content management. It serves as a comprehensive portfolio that highlights my qualifications and projects, demonstrating my expertise in web development and backend technologies.</span><span class="ru" style="display:none;">Этот проект демонстрирует мои навыки, опыт и проекты в визуально привлекательном формате. Сайт имеет удобный интерфейс и построен на надежном фреймворке Django, что обеспечивает легкую навигацию и управление контентом. Он служит полным портфолио, которое подчеркивает мои квалификации и проекты, демонстрируя мою экспертизу в веб-разработке и бэкенд-технологиях.</span></p>
-                <a href="https://github.com/Tokagero13/portfolio.git" target="_blank">Link to Git</a>
-            </div>
-        </div>
-    </section>
+## Experience
+### Forza
+**May 2022 – May 2024**
+- Optimized inventory and order management using custom software solutions.
+- Automated data management tasks with Python scripts to improve workflow efficiency.
+- Integrated APIs with warehouse management systems to enhance data flow and reliability.
+- Experience in inventory accounting using systems like 1C and Excel.
+- Developed HTML and JavaScript-based calculators and invoice creators.
+- Worked with APIs from platforms such as Ozon, Amazon, and Walmart.
 
-    <!-- Education Section -->
-    <section>
-        <h2 class="section-title"><span class="en">Education</span><span class="ru" style="display:none;">Образование</span></h2>
-        <p><strong><span class="en">Eurasian National University (ENU)</span><span class="ru" style="display:none;">Евразийский Национальный Университет (ЕНУ)</span></strong>, <span class="en">Bachelor’s Degree</span><span class="ru" style="display:none;">Степень бакалавра</span> (Sep 2017 – May 2018)</p>
-        <p><strong><span class="en">University of Huddersfield</span><span class="ru" style="display:none;">Университет Хаддерсфилда</span></strong>, <span class="en">Bachelor’s Degree</span><span class="ru" style="display:none;">Степень бакалавра</span> (Sep 2011 – May 2015)</p>
-    </section>
-</div>
+## Projects
+### Open AI API + Telegram Bot
+Developed a Telegram bot that utilizes OpenAI's API to assist with frequently asked questions (FAQ) for customers. The bot is designed to streamline the ordering process by collecting personal data necessary to complete orders.  
+**[Link to GitHub](https://github.com/Tokagero13/Open-AI-bot.git)**
 
-<!-- Bootstrap JavaScript and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+### Django Portfolio
+This project showcases skills, experience, and projects in a visually appealing format. Built on a robust Django framework, it allows for easy navigation and content management.  
+**[Link to GitHub](https://github.com/Tokagero13/portfolio.git)**
 
-</body>
-</html>
+## Education
+- **Eurasian National University (ENU)**: Bachelor’s Degree (Sep 2017 – May 2018)
+- **University of Huddersfield**: Bachelor’s Degree (Sep 2011 – May 2015)
+
+## Contact
+- **Phone**: +7 708 641 53 91
+- **Email**: [sabitshangery@gmail.com](mailto:sabitshangery@gmail.com)
+- **GitHub**: [github.com/Tokagero13](https://github.com/Tokagero13)
+
+---
+
+Feel free to reach out for collaboration or inquiries!
